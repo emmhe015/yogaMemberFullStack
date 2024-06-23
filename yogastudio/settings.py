@@ -31,12 +31,19 @@ ALLOWED_HOSTS = ['8000-emmhe015-yogamemberfull-r38pj0e6pmx.ws-eu114.gitpod.io']
 # Application definition
 
 INSTALLED_APPS = [
-    'django.contrib.admin',
+    'yogaapp',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.admin',
+    'django_cleanup.apps.CleanupConfig',  # Ensure to clean up image files
+    'django.contrib.sites',  # Required for authentication
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
+    'allauth.socialaccount.providers.google',  # Add any social provider
 ]
 
 MIDDLEWARE = [
