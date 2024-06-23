@@ -56,3 +56,16 @@ def book_class(request, class_id):
         Booking.objects.create(user=request.user, yoga_class=yoga_class)
         messages.success(request, 'Class booked successfully!')
     return redirect('home')
+
+# comments
+@login_required
+def add_comment(request, class_id):
+    yoga_class = get_object_or_404(YogaClass, id=class_id)
+    if request.method == 'POST':
+        text = request.POST.get('text')
+        if text:
+            Comment.objects.create(user=request.user, yoga_class=yoga_class, text=text)
+            messages.success(request, 'Comment added successfully!')
+        else:
+            messages.error(request, 'Comment cannot be empty.')
+    return redirect('home')
