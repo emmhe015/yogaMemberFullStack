@@ -21,3 +21,11 @@ body, html {
     text-align: center;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 }
+
+h1 {
+    
+    font-family: "Amita", serif;
+    font-weight: 400;
+    font-style: normal;
+      
+}
