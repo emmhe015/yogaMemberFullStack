@@ -45,3 +45,14 @@ def register_view(request):
     else:
         form = UserCreationForm()
     return render(request, 'yogaapp/register.html', {'form': form})
+
+# booking
+@login_required
+def book_class(request, class_id):
+    yoga_class = get_object_or_404(YogaClass, id=class_id)
+    if Booking.objects.filter(user=request.user, yoga_class=yoga_class).exists():
+        messages.error(request, 'You have already booked this class.')
+    else:
+        Booking.objects.create(user=request.user, yoga_class=yoga_class)
+        messages.success(request, 'Class booked successfully!')
+    return redirect('home')
