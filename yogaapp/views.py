@@ -10,7 +10,7 @@ from django.contrib import messages
 # homepage
 def home(request):
     classes = YogaClass.objects.all()
-    return render(request, 'yogaapp/index.html', {'classes': classes})
+    return render(request, 'index.html', {'classes': classes})
 
 # login
 def login_view(request):
@@ -29,7 +29,7 @@ def login_view(request):
             messages.error(request, 'Invalid username or password')
     else:
         form = AuthenticationForm()
-    return render(request, 'yogaapp/login.html', {'form': form})
+    return render(request, '/login.html', {'form': form})
 
 # registration
 def register_view(request):
@@ -44,7 +44,7 @@ def register_view(request):
             return redirect('home')
     else:
         form = UserCreationForm()
-    return render(request, 'yogaapp/register.html', {'form': form})
+    return render(request, 'templates/register.html', {'form': form})
 
 # booking
 @login_required
