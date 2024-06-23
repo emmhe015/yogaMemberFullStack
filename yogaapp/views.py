@@ -69,3 +69,7 @@ def add_comment(request, class_id):
         else:
             messages.error(request, 'Comment cannot be empty.')
     return redirect('home')
+
+def logout_view(request):
+    logout(request)
+    return redirect('home')
