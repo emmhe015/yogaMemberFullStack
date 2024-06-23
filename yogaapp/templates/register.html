@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'yogaapp/css/styles.css' %}">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Amita&display=swap');
+    </style>
+<body>
+    <nav class="navbar">
+        <div class="navbar-brand">Yoga Studio</div>
+        <div class="navbar-toggle" id="js-navbar-toggle">
+            <span class="navbar-icon">&#9776;</span>
+        </div>
+        <ul class="main-nav" id="js-menu">
+            <li><a href="{% url 'home' %}" class="nav-links">Home</a></li>
+            {% if user.is_authenticated %}
+            <li><a href="{% url 'logout' %}" class="nav-links">Logout</a></li>
+            {% else %}
+            <li><a href="{% url 'login' %}" class="nav-links">Login</a></li>
+            <li><a href="{% url 'register' %}" class="nav-links">Register</a></li>
+            {% endif %}
+        </ul>
+    </nav>
+    <div class="container-register">
+        <h1>Register</h1>
+        <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <label for="username">Username</label>
+            <input type="text" id="username" name="username" required>
+
+            <label for="first_name">First Name</label>
+            <input type="text" id="first_name" name="first_name" required>
+
+            <label for="last_name">Last Name</label>
+            <input type="text" id="last_name" name="last_name" required>
+
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" required>
+
+            <label for="password1">Password</label>
+            <input type="password" id="password1" name="password1" required>
+
+            <label for="password2">Confirm Password</label>
+            <input type="password" id="password2" name="password2" required>
+
+            <label for="profile_picture">Profile Picture</label>
+            <input type="file" id="profile_picture" name="profile_picture">
+
+            <button type="submit">Register</button>
+        </form>
+    </div>
+</body>
+</html>

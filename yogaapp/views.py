@@ -44,7 +44,7 @@ def register_view(request):
             return redirect('home')
     else:
         form = UserCreationForm()
-    return render(request, 'templates/register.html', {'form': form})
+    return render(request, 'register.html', {'form': form})
 
 # booking
 @login_required
