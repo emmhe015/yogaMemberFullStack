@@ -12,14 +12,18 @@
 </head>
 <body>
     <header>
-        <nav>
-            <ul>
-                <li><a href="{% url 'home' %}">Home</a></li>
+        <nav class="navbar">
+            <div class="navbar-brand">Yoga Studio</div>
+            <div class="navbar-toggle" id="js-navbar-toggle">
+                <span class="navbar-icon">&#9776;</span>
+            </div>
+            <ul class="main-nav" id="js-menu">
+                <li><a href="{% url 'home' %}" class="nav-links">Home</a></li>
                 {% if user.is_authenticated %}
-                <li><a href="{% url 'logout' %}">Logout</a></li>
+                <li><a href="{% url 'logout' %}" class="nav-links">Logout</a></li>
                 {% else %}
-                <li><a href="{% url 'login' %}">Login</a></li>
-                <li><a href="{% url 'register' %}">Register</a></li>
+                <li><a href="{% url 'login' %}" class="nav-links">Login</a></li>
+                <li><a href="{% url 'register' %}" class="nav-links">Register</a></li>
                 {% endif %}
             </ul>
         </nav>
@@ -33,6 +37,11 @@
     </div>
 
 
-    
+    <script>
+        document.getElementById('js-navbar-toggle').addEventListener('click', function() {
+            var menu = document.getElementById('js-menu');
+            menu.classList.toggle('active');
+        });
+    </script>
 </body>
 </html>
