@@ -121,32 +121,32 @@ h1 {
     background-color: rgb(41, 21, 56);
 }
 
-/* register */
-
-.container-register {
+/* Background for register page */
+.background-register {
     background-image: url('../static/images/home.jpg');
-    height: 100%;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    max-width: 400px;
-    width: 100%;
-    margin: 20px;
+    height: 100vh;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
     display: flex;
-    flex-direction: column;
-    align-items: center;
     justify-content: center;
+    align-items: center;
 }
 
-h1 {
-    font-family: 'Amita', cursive;
-    color: rgb(31, 11, 46);
+/* Register container */
+.container-register {
+    background-color: rgba(255, 255, 255, 0.8); 
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 400px;
     text-align: center;
 }
 
 form {
     display: flex;
     flex-direction: column;
-    width: 100%;
 }
 
 label {
@@ -169,7 +169,6 @@ button {
     border-radius: 4px;
     cursor: pointer;
     margin-top: 10px;
-    width: 100%;
 }
 
 button:hover {
