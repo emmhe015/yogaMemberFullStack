@@ -36,6 +36,21 @@
         </div>
     </div>
 
+    <div class="class-container">
+        {% for yoga_class in yoga_classes %}
+            <div class="class-card">
+                {% if yoga_class.image %}
+                    <img src="{{ yoga_class.image.url }}" alt="{{ yoga_class.title }}">
+                {% else %}
+                    <img src="{% static 'images/default_yoga_class.jpg' %}" alt="{{ yoga_class.title }}">
+                {% endif %}
+                <h2>{{ yoga_class.title }}</h2>
+                <p>{{ yoga_class.description|truncatewords:20 }}</p>
+                <a href="{% url 'booking' yoga_class.id %}" class="btn">Book now</a>
+            </div>
+        {% endfor %}
+    </div>
+
     <script>
         document.getElementById('js-navbar-toggle').addEventListener('click', function() {
             var menu = document.getElementById('js-menu');
