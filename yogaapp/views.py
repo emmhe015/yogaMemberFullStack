@@ -33,7 +33,7 @@ def login_view(request):
     return render(request, '/login.html', {'form': form})
 
 # registration
-def register(request):
+def register_view(request):
     if request.method == 'POST':
         user_form = UserRegisterForm(request.POST)
         profile_form = ProfileUpdateForm(request.POST, request.FILES)
