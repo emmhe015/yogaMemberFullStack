@@ -25,33 +25,17 @@
             {% endif %}
         </ul>
     </nav>
-    <div class="container-register">
-        <h1>Register</h1>
-        <form method="post" enctype="multipart/form-data">
-            {% csrf_token %}
-            <label for="username">Username</label>
-            <input type="text" id="username" name="username" required>
-
-            <label for="first_name">First Name</label>
-            <input type="text" id="first_name" name="first_name" required>
-
-            <label for="last_name">Last Name</label>
-            <input type="text" id="last_name" name="last_name" required>
-
-            <label for="email">Email</label>
-            <input type="email" id="email" name="email" required>
-
-            <label for="password1">Password</label>
-            <input type="password" id="password1" name="password1" required>
-
-            <label for="password2">Confirm Password</label>
-            <input type="password" id="password2" name="password2" required>
-
-            <label for="profile_picture">Profile Picture</label>
-            <input type="file" id="profile_picture" name="profile_picture">
-
-            <button type="submit">Register</button>
-        </form>
-    </div>
+        <div class="background-register"> 
+            <div class="container-register">
+                <h1>Register</h1>
+                <form method="post" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    {{ user_form.as_p }}
+                    {{ profile_form.as_p }}
+                    <button type="submit">Register</button>
+                </form>
+            </div>
+        </div>
+</div>
 </body>
 </html>
