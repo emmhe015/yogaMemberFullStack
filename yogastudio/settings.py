@@ -25,7 +25,8 @@ SECRET_KEY = 'django-insecure-hug-d()2t%zu3nf1q9dq_7f^_c3!-56ikuf4x&t=h73#^#j+)2
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['8000-emmhe015-yogamemberfull-r38pj0e6pmx.ws-eu114.gitpod.io']
+ALLOWED_HOSTS = ['127.0.0.1', 'localhost', '8000-emmhe015-yogamemberfull-r38pj0e6pmx.ws-eu114.gitpod.io', '127.0.0.1:8000/admin/'
+]
 
 
 # Application definition
@@ -131,6 +132,9 @@ USE_I18N = True
 
 USE_TZ = True
 
+
+MEDIA_URL = '/media/'
+MEDIA_ROOT = [BASE_DIR / 'media',]
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
