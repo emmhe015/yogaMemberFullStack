@@ -32,19 +32,21 @@ def login_view(request):
     return render(request, '/login.html', {'form': form})
 
 # registration
-def register_view(request):
+def register(request):
     if request.method == 'POST':
-        form = UserCreationForm(request.POST)
-        if form.is_valid():
-            form.save()
-            username = form.cleaned_data.get('username')
-            password = form.cleaned_data.get('password1')
-            user = authenticate(username=username, password=password)
+        user_form = UserRegisterForm(request.POST)
+        profile_form = ProfileUpdateForm(request.POST, request.FILES)
+        if user_form.is_valid() and profile_form.is_valid():
+            user = user_form.save()
+            profile = profile_form.save(commit=False)
+            profile.user = user
+            profile.save()
             login(request, user)
-            return redirect('home')
+            return redirect('home') 
     else:
-        form = UserCreationForm()
-    return render(request, 'register.html', {'form': form})
+        user_form = UserRegisterForm()
+        profile_form = ProfileUpdateForm()
+    return render(request, 'register.html', {'user_form': user_form, 'profile_form': profile_form})
 
 # booking
 @login_required
