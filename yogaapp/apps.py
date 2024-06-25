@@ -5,8 +5,8 @@ class StudioConfig(AppConfig):
     default_auto_field = 'django.db.models.BigAutoField'
     name = 'yogaapp'
 
-class AccountsConfig(AppConfig):
-    name = 'accounts'
+class YogaappConfig(AppConfig):
+    name = 'yogaapp'
 
     def ready(self):
-        import accounts.signals
+        import yogaapp.signals
