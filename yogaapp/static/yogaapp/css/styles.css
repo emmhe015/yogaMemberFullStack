@@ -84,6 +84,40 @@ h1 {
     background-color: rgb(41, 21, 56);
 }
 
+.testimonials {
+    background-image: url('path/to/your/background-image.jpg'); /* Ange sökvägen till din bakgrundsbild */
+    background-size: cover;
+    background-position: center;
+    padding: 50px 0;
+    text-align: center;
+    color: white;
+}
+
+.testimonials h1 {
+    font-size: 2.5em; /* Anpassa storleken på rubriken */
+    margin-bottom: 20px;
+    font-family: 'YourPreferredFont', sans-serif; /* Anpassa till samma font som tidigare h1 */
+}
+
+.testimonials-container {
+    display: flex;
+    justify-content: center;
+    gap: 20px; /* Anpassa mellanrummet mellan citaten */
+    flex-wrap: wrap; /* Tillåter rader att brytas om skärmbredden är för liten */
+}
+
+.testimonial {
+    background: rgba(0, 0, 0, 0.7); /* Svart bakgrund med genomskinlighet */
+    padding: 20px;
+    border-radius: 10px;
+    max-width: 200px; /* Anpassa bredden på varje citat */
+    margin: 10px;
+}
+
+.testimonial p {
+    margin: 0 0 10px;
+}
+
 /* login page */
 
 .login-container {
