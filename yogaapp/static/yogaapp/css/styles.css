@@ -85,10 +85,7 @@ h1 {
 }
 
 .testimonials {
-    background-image: url('../static/images/testimonials.jpg'); /* Ange sökvägen till din bakgrundsbild */
-    background-size: cover;
-    background-position: center;
-    padding: 50px 0;
+    padding: 0px 0;
     text-align: center;
     color: rgb(31, 11, 46);
 }
@@ -101,7 +98,7 @@ h1 {
 }
 
 .testimonial {
-    background: rgba(0, 0, 0, 0.7); /* Svart bakgrund med genomskinlighet */
+    background: rgba(253, 105, 7, 0.7); 
     padding: 20px;
     border-radius: 10px;
     max-width: 200px; /* Anpassa bredden på varje citat */
@@ -163,7 +160,7 @@ h1 {
 
 /* Register container */
 .container-register {
-    background-color: rgba(59, 25, 132, 0.8); 
+    background-color: rgba(220, 207, 250, 0.8); 
     padding: 20px;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -207,7 +204,7 @@ button:hover {
     display: flex;
     flex-wrap: nowrap;
     overflow-x: auto;
-    padding: 2rem;
+
 }
 
 .class-card {
