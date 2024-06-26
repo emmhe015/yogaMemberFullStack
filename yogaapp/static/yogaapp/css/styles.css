@@ -85,18 +85,12 @@ h1 {
 }
 
 .testimonials {
-    background-image: url('path/to/your/background-image.jpg'); /* Ange sökvägen till din bakgrundsbild */
+    background-image: url('../static/images/testimonials.jpg'); /* Ange sökvägen till din bakgrundsbild */
     background-size: cover;
     background-position: center;
     padding: 50px 0;
     text-align: center;
-    color: white;
-}
-
-.testimonials h1 {
-    font-size: 2.5em; /* Anpassa storleken på rubriken */
-    margin-bottom: 20px;
-    font-family: 'YourPreferredFont', sans-serif; /* Anpassa till samma font som tidigare h1 */
+    color: rgb(31, 11, 46);
 }
 
 .testimonials-container {
