@@ -6,6 +6,9 @@
     <title>Login</title>
     {% load static %}
     <link rel="stylesheet" href="{% static 'yogaapp/css/styles.css' %}">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Amita&display=swap');
+    </style>
 </head>
 <body>
     <nav class="navbar">
@@ -25,7 +28,7 @@
     </nav>
 
     <div class="login-container">
-        <h2>Login</h2>
+        <h1>Login</h1>
         <form method="post" action="{% url 'login' %}">
             {% csrf_token %}
             {{ form.as_p }}

@@ -125,7 +125,8 @@ h1 {
     text-align: center;
 }
 
-.login-container h2 {
+.login-container h1 {
+    font-family: "Amita", serif;
     color: rgb(31, 11, 46);
 }
 
