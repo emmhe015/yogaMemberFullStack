@@ -68,6 +68,10 @@ h1 {
       
 }
 
+p {
+    font-family: "Quicksand", sans-serif;
+}
+
 .btn-get-started {
     display: inline-block;
     margin-top: 20px;
