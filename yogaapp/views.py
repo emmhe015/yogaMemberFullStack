@@ -75,4 +75,4 @@ def add_comment(request, class_id):
 
 def logout_view(request):
     logout(request)
-    return redirect('home')
+    return redirect('logout.html')
