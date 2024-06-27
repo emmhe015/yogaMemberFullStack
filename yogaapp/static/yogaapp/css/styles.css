@@ -1,7 +1,6 @@
 body, html {
     height: 100%;
     margin: 0;
-    font-family: Arial, sans-serif;
 }
 
 .navbar {
@@ -70,6 +69,10 @@ h1 {
 
 p {
     font-family: "Quicksand", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+
 }
 
 .btn-get-started {
@@ -97,20 +100,24 @@ p {
 .testimonials-container {
     display: flex;
     justify-content: center;
-    gap: 20px; /* Anpassa mellanrummet mellan citaten */
-    flex-wrap: wrap; /* Tillåter rader att brytas om skärmbredden är för liten */
+    gap: 20px; 
+    flex-wrap: wrap; 
 }
 
 .testimonial {
     background: rgba(253, 105, 7, 0.7); 
     padding: 20px;
     border-radius: 10px;
-    max-width: 200px; /* Anpassa bredden på varje citat */
+    max-width: 200px; 
     margin: 10px;
 }
 
 .testimonial p {
     margin: 0 0 10px;
+    font-family: "Quicksand", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
 }
 
 /* login page */
