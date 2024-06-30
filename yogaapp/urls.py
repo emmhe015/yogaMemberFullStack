@@ -9,4 +9,5 @@ urlpatterns = [
     path('register/', views.register_view, name='register'),
     path('book/<int:class_id>/', views.book_class, name='book_class'),
     path('comment/<int:class_id>/', views.add_comment, name='add_comment'),
+    path('summernote/', include('django_summernote.urls')),
 ]
