@@ -32,7 +32,6 @@ ALLOWED_HOSTS = ['127.0.0.1', 'localhost', '8000-emmhe015-yogamemberfull-r38pj0e
 # Application definition
 
 INSTALLED_APPS = [
-    'yogaapp',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
@@ -45,6 +44,7 @@ INSTALLED_APPS = [
     'allauth.account',
     'allauth.socialaccount',
     'allauth.socialaccount.providers.google',  # Add any social provider
+    'yogaapp',
 ]
 
 AUTHENTICATION_BACKENDS = (
