@@ -42,7 +42,7 @@ def register_view(request):
             profile = profile_form.save(commit=False)
             profile.user = user
             profile.save()
-            login(request, user)
+            login(request, user, backend='django.contrib.auth.backends.ModelBackend')
             return redirect('home') 
     else:
         user_form = UserRegisterForm()
