@@ -10,8 +10,8 @@ from .forms import UserRegisterForm, ProfileUpdateForm
 
 # homepage
 def home(request):
-    classes = YogaClass.objects.all()
-    return render(request, 'index.html', {'classes': classes})
+    yoga_classes = YogaClass.objects.all()
+    return render(request, 'index.html', {'yoga_classes': yoga_classes})
 
 # homepage for logged in
 @login_required
