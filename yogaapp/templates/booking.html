@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Booking for {{ yoga_class.title }}</title>
+</head>
+<body>
+    <h1>{{ yoga_class.title }}</h1>
+    <p>{{ yoga_class.description }}</p>
+    <h2>Bookings</h2>
+    <ul>
+        {% for booking in bookings %}
+            <li>{{ booking.user.username }} - {{ booking.booking_date }}</li>
+        {% endfor %}
+    </ul>
+    <a href="{% url 'home' %}">Back to Home</a>
+</body>
+</html>
