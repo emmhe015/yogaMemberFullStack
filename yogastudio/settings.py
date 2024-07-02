@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django.contrib.admin',
+    "accounts",
     'django_cleanup.apps.CleanupConfig',  # Ensure to clean up image files
     'django.contrib.sites',  # Required for authentication
     'allauth',
