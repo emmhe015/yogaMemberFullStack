@@ -1,9 +1,36 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Booking for {{ yoga_class.title }}</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Yoga Studio</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'yogaapp/css/styles.css' %}">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Amita&family=Quicksand&display=swap');
+        </style>
 </head>
 <body>
+    <nav class="navbar">
+        <div class="navbar-brand">Yoga Studio</div>
+        <div class="navbar-toggle" id="js-navbar-toggle">
+            <span class="navbar-icon">&#9776;</span>
+        </div>
+        <ul class="main-nav" id="js-menu">
+            <li><a href="{% url 'home' %}" class="nav-links">Home</a></li>
+            {% if user.is_authenticated %}
+            <li><a href="{% url 'home_logged_in' %}" class="nav-links">My Page</a></li>
+            <li><a href="{% url 'logout' %}" class="nav-links">Logout</a></li>
+            {% else %}
+            <li><a href="{% url 'login' %}" class="nav-links">Login</a></li>
+            <li><a href="{% url 'register' %}" class="nav-links">Register</a></li>
+            {% endif %}
+        </ul>
+    </nav>
+    <body>
+    <div class="background">
+        <div class="centered-text">
+    <h1>Booking for {{ yoga_class.title }}</h1>
     <h1>{{ yoga_class.title }}</h1>
     <p>{{ yoga_class.description }}</p>
     <h2>Bookings</h2>
@@ -13,5 +40,7 @@
         {% endfor %}
     </ul>
     <a href="{% url 'home' %}">Back to Home</a>
+        </div>
+    </div>
 </body>
 </html>
