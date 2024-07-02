@@ -29,7 +29,7 @@ def login_view(request):
             user = authenticate(username=username, password=password)
             if user is not None:
                 login(request, user)
-                return redirect('home')
+                return redirect('home_logged_in')
             else:
                 messages.error(request, 'Invalid username or password')
         else:
@@ -49,7 +49,7 @@ def register_view(request):
             profile.user = user
             profile.save()
             login(request, user, backend='django.contrib.auth.backends.ModelBackend')
-            return redirect('home') 
+            return redirect('home_logged_in') 
     else:
         user_form = UserRegisterForm()
         profile_form = ProfileUpdateForm()
