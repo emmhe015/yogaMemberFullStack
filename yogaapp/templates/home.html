@@ -4,6 +4,15 @@
 {% block content %}
 {% if user.is_authenticated %}
 <p>Hi {{ user.username }}!</p>
+<h1>{{ yoga_class.title }}</h1>
+<p>{{ yoga_class.description }}</p>
+<h2>Bookings</h2>
+<ul>
+    {% for booking in bookings %}
+        <li>{{ booking.user.username }} - {{ booking.booking_date }}</li>
+    {% endfor %}
+</ul>
+<a href="{% url 'home' %}">Back to Home</a>
 <p><a href="{% url 'password_change' %}">Password Change</a></p>
 <form action="{% url 'logout' %}" method="post">
   {% csrf_token %}
