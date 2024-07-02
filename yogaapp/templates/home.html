@@ -1,9 +1,40 @@
 
-{% block title %}Home{% endblock %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Yoga Studio</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'yogaapp/css/styles.css' %}">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Amita&family=Quicksand&display=swap');
+        </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="navbar-brand">Yoga Studio</div>
+        <div class="navbar-toggle" id="js-navbar-toggle">
+            <span class="navbar-icon">&#9776;</span>
+        </div>
+        <ul class="main-nav" id="js-menu">
+            <li><a href="{% url 'home' %}" class="nav-links">Home</a></li>
+            {% if user.is_authenticated %}
+            <li><a href="{% url 'home_logged_in' %}" class="nav-links">My Page</a></li>
+            <li><a href="{% url 'logout' %}" class="nav-links">Logout</a></li>
+      
+            {% else %}
+            <li><a href="{% url 'login' %}" class="nav-links">Login</a></li>
+            <li><a href="{% url 'register' %}" class="nav-links">Register</a></li>
+            {% endif %}
+        </ul>
+    </nav>
 
+    <div class="background">
+      <div class="centered-text">
 {% block content %}
 {% if user.is_authenticated %}
-<p>Hi {{ user.username }}!</p>
+<h1>Good to see you, {{ user.username }}!</h1>
 <h1>{{ yoga_class.title }}</h1>
 <p>{{ yoga_class.description }}</p>
 <h2>Bookings</h2>
@@ -12,6 +43,21 @@
         <li>{{ booking.user.username }} - {{ booking.booking_date }}</li>
     {% endfor %}
 </ul>
+<div class="class-container">
+  {% for yoga_class in yoga_classes %}
+      <div class="class-card">
+          {% if yoga_class.image %}
+              <img src="{{ yoga_class.image.url }}" alt="{{ yoga_class.title }}">
+          {% else %}
+              <img src="{% static 'images/default_yoga_class.jpg' %}" alt="{{ yoga_class.title }}">
+          {% endif %}
+          <h2>{{ yoga_class.title }}</h2>
+          <p>{{ yoga_class.description|truncatewords:20 }}</p>
+          <a href="{% url 'booking' yoga_class.id %}" class="btn">Book now</a>
+      </div>
+  {% endfor %}
+</div>
+
 <a href="{% url 'home' %}">Back to Home</a>
 <p><a href="{% url 'password_change' %}">Password Change</a></p>
 <form action="{% url 'logout' %}" method="post">
@@ -23,3 +69,5 @@
 <a href="{% url 'login' %}">Log In</a>
 {% endif %}
 {% endblock %}
+      </div>
+      </div>
