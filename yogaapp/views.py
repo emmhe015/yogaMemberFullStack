@@ -13,6 +13,12 @@ def home(request):
     classes = YogaClass.objects.all()
     return render(request, 'index.html', {'classes': classes})
 
+# homepage for logged in
+@login_required
+def home_logged_in(request):
+    return render(request, 'home.html')
+
+
 # login
 def login_view(request):
     if request.method == 'POST':
@@ -48,6 +54,7 @@ def register_view(request):
         user_form = UserRegisterForm()
         profile_form = ProfileUpdateForm()
     return render(request, 'register.html', {'user_form': user_form, 'profile_form': profile_form})
+
 
 # booking
 @login_required
