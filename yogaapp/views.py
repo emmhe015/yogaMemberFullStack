@@ -65,7 +65,13 @@ def book_class(request, class_id):
     else:
         Booking.objects.create(user=request.user, yoga_class=yoga_class)
         messages.success(request, 'Class booked successfully!')
-    return redirect('home')
+    return redirect('booking', class_id) 
+    
+@login_required
+def booking_view(request, class_id):
+    yoga_class = get_object_or_404(YogaClass, id=class_id)
+    bookings = Booking.objects.filter(yoga_class=yoga_class)
+    return render(request, 'booking.html', {'yoga_class': yoga_class, 'bookings': bookings})
 
 # comments
 @login_required
