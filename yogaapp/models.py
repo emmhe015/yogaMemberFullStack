@@ -42,8 +42,8 @@ class LiveClass(models.Model):
 
 class Booking(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
-    live_class = models.ForeignKey(LiveClass, on_delete=models.CASCADE)
-    booked_at = models.DateTimeField(auto_now_add=True)
+    live_class = models.ForeignKey(LiveClass, on_delete=models.CASCADE, default=1)
+    booking_date = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
         return f'{self.user.username} - {self.live_class.title}'
