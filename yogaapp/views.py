@@ -79,7 +79,7 @@ def update_profile(request):
 
 # booking
 @login_required
-def book_class(request, class_id):
+def booking_view(request, class_id):
     live_class = get_object_or_404(LiveClass, id=class_id)
     booking, created = Booking.objects.get_or_create(user=request.user, live_class=live_class)
     if created:
