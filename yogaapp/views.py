@@ -8,6 +8,7 @@ from .models import YogaClass, LiveClass, Booking, Comment
 from django.contrib import messages
 from .forms import UserRegisterForm, ProfileUpdateForm
 from django.core.mail import send_mail
+from .forms import LiveClassForm
 
 # homepage
 def home(request):
@@ -75,7 +76,19 @@ def update_profile(request):
         form = ProfileUpdateForm(instance=request.user)
 
     return render(request, 'update_profile.html', {'form': form})
+    
+# create liveclass
+class CreateLiveClassView(View):
+    def get(self, request):
+        form = LiveClassForm()
+        return render(request, 'create_live_class.html', {'form': form})
 
+    def post(self, request):
+        form = LiveClassForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('home')
+        return render(request, 'create_live_class.html', {'form': form})
 
 # booking
 @login_required
