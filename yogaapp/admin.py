@@ -20,7 +20,15 @@ class YogaClassAdmin(admin.ModelAdmin):
 
 @admin.register(Booking)
 class BookingAdmin(admin.ModelAdmin):
-    list_display = ('user', 'yoga_class', 'booking_date')
+    list_display = ('user', 'get_live_class', 'get_booking_date')
+
+    def get_live_class(self, obj):
+        return obj.live_class.title
+    get_live_class.short_description = 'Live Class'
+
+    def get_booking_date(self, obj):
+        return obj.booked_at
+    get_booking_date.short_description = 'Booking Date'
 
 @admin.register(Comment)
 class CommentAdmin(admin.ModelAdmin):
