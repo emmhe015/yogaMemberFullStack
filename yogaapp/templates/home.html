@@ -63,6 +63,23 @@
     </div>
 </div>
 
+<div class="calendar-section">
+    <h2>Live Class Calendar</h2>
+    <div id="calendar">
+        {% for live_class in live_classes %}
+            <div class="class-entry">
+                <h3>{{ live_class.title }}</h3>
+                <p>{{ live_class.date }} at {{ live_class.time }}</p>
+                <form action="{% url 'book_class' live_class.id %}" method="post">
+                    {% csrf_token %}
+                    <button type="submit">Book Now</button>
+                </form>
+            </div>
+        {% endfor %}
+    </div>
+</div>
+
+
 <a href="{% url 'home' %}" class="btn-get-started">Back to Home</a>
 <a href="{% url 'update_profile' %}" class="btn-get-started">Update profile</a>
 <form action="{% url 'logout' %}" method="post">
