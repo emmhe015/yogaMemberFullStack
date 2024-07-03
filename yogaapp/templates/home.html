@@ -35,31 +35,36 @@
 {% block content %}
 {% if user.is_authenticated %}
 <h1>Good to see you, {{ user.username }}!</h1>
-<h1>{{ yoga_class.title }}</h1>
-<p>{{ yoga_class.description }}</p>
-<h2>Bookings</h2>
-<ul>
-    {% for booking in bookings %}
-        <li>{{ booking.user.username }} - {{ booking.booking_date }}</li>
-    {% endfor %}
-</ul>
-<div class="class-container">
-  {% for yoga_class in yoga_classes %}
-      <div class="class-card">
-          {% if yoga_class.image %}
-              <img src="{{ yoga_class.image.url }}" alt="{{ yoga_class.title }}">
-          {% else %}
-              <img src="{% static 'images/default_yoga_class.jpg' %}" alt="{{ yoga_class.title }}">
-          {% endif %}
-          <h2>{{ yoga_class.title }}</h2>
-          <p>{{ yoga_class.description|truncatewords:20 }}</p>
-          <a href="{% url 'booking' yoga_class.id %}" class="btn">Book now</a>
-      </div>
-  {% endfor %}
+
+<div class="video-section">
+    <div class="video-container">
+        <h2>BEGINNERS</h2>
+        <iframe src="https://www.youtube.com/embed/YOUR_VIDEO_ID1" frameborder="0" allowfullscreen></iframe>
+        <button onclick="toggleDescription('desc1')">More Info</button>
+        <p id="desc1" class="description">Short description...</p>
+    </div>
+    <div class="video-container">
+        <h2>HATHA</h2>
+        <iframe src="https://www.youtube.com/embed/YOUR_VIDEO_ID2" frameborder="0" allowfullscreen></iframe>
+        <button onclick="toggleDescription('desc2')">More Info</button>
+        <p id="desc2" class="description">Short description...</p>
+    </div>
+    <div class="video-container">
+        <h2>VINYASA</h2>
+        <iframe src="https://www.youtube.com/embed/YOUR_VIDEO_ID3" frameborder="0" allowfullscreen></iframe>
+        <button onclick="toggleDescription('desc3')">More Info</button>
+        <p id="desc3" class="description">Short description...</p>
+    </div>
+    <div class="video-container">
+        <h2>ASHTANGA</h2>
+        <iframe src="https://www.youtube.com/embed/YOUR_VIDEO_ID4" frameborder="0" allowfullscreen></iframe>
+        <button onclick="toggleDescription('desc4')">More Info</button>
+        <p id="desc4" class="description">Short description...</p>
+    </div>
 </div>
 
-<a href="{% url 'home' %}">Back to Home</a>
-<p><a href="{% url 'password_change' %}">Password Change</a></p>
+<a href="{% url 'home' %}" class="btn-get-started">Back to Home</a>
+<a href="{% url 'update_profile' %}" class="btn-get-started">Update profile</a>
 <form action="{% url 'logout' %}" method="post">
   {% csrf_token %}
   <button type="submit">Log Out</button>
