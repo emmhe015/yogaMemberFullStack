@@ -55,6 +55,25 @@ def register_view(request):
         profile_form = ProfileUpdateForm()
     return render(request, 'register.html', {'user_form': user_form, 'profile_form': profile_form})
 
+# update profile
+@login_required
+def update_profile(request):
+    if request.method == 'POST':
+        form = ProfileUpdateForm(request.POST, instance=request.user)
+        if form.is_valid():
+            user = form.save(commit=False)
+            if form.cleaned_data['password']:
+                user.set_password(form.cleaned_data['password'])
+            user.save()
+            messages.success(request, 'Your profile was successfully updated!')
+            return redirect('profile')
+        else:
+            messages.error(request, 'Please correct the error below.')
+    else:
+        form = ProfileUpdateForm(instance=request.user)
+
+    return render(request, 'update_profile.html', {'form': form})
+
 
 # booking
 @login_required
