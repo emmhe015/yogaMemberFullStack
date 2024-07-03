@@ -33,14 +33,11 @@ class YogaClass(models.Model):
 
 class Booking(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
-    yoga_class = models.ForeignKey(YogaClass, on_delete=models.CASCADE)
-    booking_date = models.DateTimeField(auto_now_add=True)
-
-    class Meta:
-        unique_together = ['user', 'yoga_class']
+    live_class = models.ForeignKey(LiveClass, on_delete=models.CASCADE)
+    booked_at = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
-        return f'{self.user.username} booked {self.yoga_class.title}'
+        return f'{self.user.username} - {self.live_class.title}'
 
 class Comment(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
