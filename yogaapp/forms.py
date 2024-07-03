@@ -4,6 +4,17 @@ from django.contrib.auth.forms import UserCreationForm
 from .models import Profile
 from django.contrib.auth.password_validation import validate_password
 from django.core.exceptions import ValidationError
+from .models import LiveClass
+from bootstrap_datepicker_plus.widgets import DatePickerInput, TimePickerInput
+
+class LiveClassForm(forms.ModelForm):
+    class Meta:
+        model = LiveClass
+        fields = ['title', 'date', 'time', 'description']
+        widgets = {
+            'date': DatePickerInput(format='%Y-%m-%d'),
+            'time': TimePickerInput(format='%H:%M:%S'),
+        }
 
 class UserRegisterForm(UserCreationForm):
     email = forms.EmailField(required=True)
