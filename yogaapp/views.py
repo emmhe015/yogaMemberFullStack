@@ -4,9 +4,10 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.contrib.auth.decorators import login_required
-from .models import YogaClass, Booking, Comment
+from .models import YogaClass, LiveClass, Booking, Comment
 from django.contrib import messages
 from .forms import UserRegisterForm, ProfileUpdateForm
+from django.core.mail import send_mail
 
 # homepage
 def home(request):
@@ -16,7 +17,8 @@ def home(request):
 # homepage for logged in
 @login_required
 def home_logged_in(request):
-    return render(request, 'home.html')
+    live_classes = LiveClass.objects.all()
+    return render(request, 'home.html', {'live_classes': live_classes})
 
 
 # login
@@ -78,19 +80,20 @@ def update_profile(request):
 # booking
 @login_required
 def book_class(request, class_id):
-    yoga_class = get_object_or_404(YogaClass, id=class_id)
-    if Booking.objects.filter(user=request.user, yoga_class=yoga_class).exists():
-        messages.error(request, 'You have already booked this class.')
+    live_class = get_object_or_404(LiveClass, id=class_id)
+    booking, created = Booking.objects.get_or_create(user=request.user, live_class=live_class)
+    if created:
+        send_mail(
+            'Booking Confirmation',
+            f'You have booked {live_class.title} on {live_class.date} at {live_class.time}.',
+            'from@example.com',
+            [request.user.email],
+            fail_silently=False,
+        )
+        return render(request, 'booking/success.html', {'live_class': live_class})
     else:
-        Booking.objects.create(user=request.user, yoga_class=yoga_class)
-        messages.success(request, 'Class booked successfully!')
-    return redirect('booking', class_id) 
-    
-@login_required
-def booking_view(request, class_id):
-    yoga_class = get_object_or_404(YogaClass, id=class_id)
-    bookings = Booking.objects.filter(yoga_class=yoga_class)
-    return render(request, 'booking.html', {'yoga_class': yoga_class, 'bookings': bookings})
+        return render(request, 'booking/already_booked.html', {'live_class': live_class})
+
 
 # comments
 @login_required
