@@ -153,6 +153,7 @@ p {
     align-items: center;
     justify-content: center;
     text-align: center;
+    width: 100%;
 }
 
 .login-container h1 {
