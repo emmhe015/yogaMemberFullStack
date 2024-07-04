@@ -333,6 +333,18 @@ iframe {
     color: rgb(31, 11, 46);
 }
 
+footer {
+    background-image: url('../static/images/footer.jpg');
+    height: 500px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    }
+
 /* Media queries for responsiveness */
 
 @media (max-width: 768px) {
