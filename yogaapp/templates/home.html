@@ -86,11 +86,11 @@
         </div>
     </div>
     
-    <a href="{% url 'home' %}" class="btn-get-started">Back to Home</a>
-    <a href="{% url 'update_profile' %}" class="btn-get-started">Update profile</a>
+    <a href="{% url 'home' %}" class="btn">Back to Home</a>
+    <a href="{% url 'update_profile' %}" class="btn">Update profile</a>
     <form action="{% url 'logout' %}" method="post">
         {% csrf_token %}
-        <button type="submit">Log Out</button>
+        <button type="submit" class="btn">Log Out</button>
     </form>
     {% else %}
     <p>You are not logged in</p>
