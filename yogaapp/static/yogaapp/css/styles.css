@@ -1,7 +1,5 @@
 /* General reset */
 body, html {
-    height: 100%;
-    margin: 0;
     padding: 0;
     box-sizing: border-box;
     font-family: 'Quicksand', sans-serif;
@@ -11,7 +9,6 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
     background-color: #f4f4f4;
 }
 
@@ -57,7 +54,7 @@ body {
 /* Background section */
 .background {
     background-image: url('../static/images/home.jpg');
-    height: 100vh;
+    height: 90vh;
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
