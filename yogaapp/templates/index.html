@@ -37,20 +37,29 @@
         </div>
     </div>
 
-    <div class="class-container">
-        {% for yoga_class in yoga_classes %}
-            <div class="class-card">
-                {% if yoga_class.image %}
-                    <img src="{{ yoga_class.image.url }}" alt="{{ yoga_class.title }}">
-                {% else %}
-                    <img src="{% static 'images/default_yoga_class.jpg' %}" alt="{{ yoga_class.title }}">
-                {% endif %}
-                <h2>{{ yoga_class.title }}</h2>
-                <p>{{ yoga_class.description|truncatewords:20 }}</p>
-                <a href="{% url 'booking' yoga_class.id %}" class="btn">Book now</a>
+    <div class="yoga-live-classes">
+        <h1>Yoga live classes</h1>
+        <div class="live-classes-gallery">
+            <div class="live-class-item">
+                <img src="{% static 'images/yoga_class1.jpg' %}" alt="Yoga Class 1">
+                <p>Description for Yoga Class 1</p>
             </div>
-        {% endfor %}
+            <div class="live-class-item">
+                <img src="{% static 'images/yoga_class2.jpg' %}" alt="Yoga Class 2">
+                <p>Description for Yoga Class 2</p>
+            </div>
+            <div class="live-class-item">
+                <img src="{% static 'images/yoga_class3.jpg' %}" alt="Yoga Class 3">
+                <p>Description for Yoga Class 3</p>
+            </div>
+            <div class="live-class-item">
+                <img src="{% static 'images/yoga_class4.jpg' %}" alt="Yoga Class 4">
+                <p>Description for Yoga Class 4</p>
+            </div>
+        </div>
     </div>
+        <a href="{% url 'booking' yoga_class.id %}" class="btn">Book now</a>
+
     
     <div class="testimonials">
         <h1>Yoga success stories</h1>
