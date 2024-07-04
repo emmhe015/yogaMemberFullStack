@@ -18,11 +18,8 @@ def home(request):
 # homepage for logged in
 @login_required
 def home_logged_in(request):
-    live_classes = LiveClass.objects.all()
-    context = {
-        'live_classes': live_classes
-    }
-    return render(request, 'home.html', context)
+    live_classes = LiveClass.objects.all().order_by('date', 'time')
+    return render(request, 'home.html', {'live_classes': live_classes})
 
 
 # login
