@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,7 +8,9 @@
     <link rel="stylesheet" href="{% static 'yogaapp/css/styles.css' %}">
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Amita&family=Quicksand&display=swap');
-        </style>
+    </style>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fullcalendar@5.9.0/main.min.css" />
+    <script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.9.0/main.min.js"></script>
 </head>
 <body>
     <nav class="navbar">
@@ -22,7 +23,6 @@
             {% if user.is_authenticated %}
             <li><a href="{% url 'home_logged_in' %}" class="nav-links">My Page</a></li>
             <li><a href="{% url 'logout' %}" class="nav-links">Logout</a></li>
-      
             {% else %}
             <li><a href="{% url 'login' %}" class="nav-links">Login</a></li>
             <li><a href="{% url 'register' %}" class="nav-links">Register</a></li>
@@ -31,71 +31,61 @@
     </nav>
 
     <div class="background">
-      <div class="centered-text">
-{% block content %}
-{% if user.is_authenticated %}
-<h1>Good to see you, {{ user.username }}!</h1>
-<p>What do you need today?<br>
-    Calmness with a Vinyasa class or power with a Hatha class?</p>
-      </div></div>
-<div class="video-section">
-    <div class="video-container">
-        <h2>BEGINNERS</h2>
-        <iframe src="https://www.youtube.com/embed/YOUR_VIDEO_ID1" frameborder="0" allowfullscreen></iframe>
-        <button onclick="toggleDescription('desc1')">More Info</button>
-        <p id="desc1" class="description">Short description...</p>
+        <div class="centered-text">
+            {% block content %}
+            {% if user.is_authenticated %}
+            <h1>Good to see you, {{ user.username }}!</h1>
+            <p>What do you need today?<br>
+                Calmness with a Vinyasa class or power with a Hatha class?</p>
+        </div>
     </div>
-    <div class="video-container">
-        <h2>HATHA</h2>
-        <iframe src="https://www.youtube.com/embed/YOUR_VIDEO_ID2" frameborder="0" allowfullscreen></iframe>
-        <button onclick="toggleDescription('desc2')">More Info</button>
-        <p id="desc2" class="description">Short description...</p>
-    </div>
-    <div class="video-container">
-        <h2>VINYASA</h2>
-        <iframe src="https://www.youtube.com/embed/YOUR_VIDEO_ID3" frameborder="0" allowfullscreen></iframe>
-        <button onclick="toggleDescription('desc3')">More Info</button>
-        <p id="desc3" class="description">Short description...</p>
-    </div>
-    <div class="video-container">
-        <h2>ASHTANGA</h2>
-        <iframe src="https://www.youtube.com/embed/YOUR_VIDEO_ID4" frameborder="0" allowfullscreen></iframe>
-        <button onclick="toggleDescription('desc4')">More Info</button>
-        <p id="desc4" class="description">Short description...</p>
-    </div>
-</div>
 
-<div class="calendar-section">
-    <h2>Live Class Calendar</h2>
-    <div id="calendar">
-        {% for live_class in live_classes %}
-            <div class="class-entry">
-                <h3>{{ live_class.title }}</h3>
-                <p>{{ live_class.date }} at {{ live_class.time }}</p>
-                <form action="{% url 'book_class' live_class.id %}" method="post">
-                    {% csrf_token %}
-                    <button type="submit">Book Now</button>
-                </form>
-            </div>
-        {% endfor %}
+    <div class="video-section">
+        <div class="video-container">
+            <h2>BEGINNERS</h2>
+            <iframe src="https://www.youtube.com/embed/YOUR_VIDEO_ID1" frameborder="0" allowfullscreen></iframe>
+            <button onclick="toggleDescription('desc1')">More Info</button>
+            <p id="desc1" class="description" style="display: none;">Short description...</p>
+        </div>
+        <div class="video-container">
+            <h2>HATHA</h2>
+            <iframe src="https://www.youtube.com/embed/YOUR_VIDEO_ID2" frameborder="0" allowfullscreen></iframe>
+            <button onclick="toggleDescription('desc2')">More Info</button>
+            <p id="desc2" class="description" style="display: none;">Short description...</p>
+        </div>
+        <div class="video-container">
+            <h2>VINYASA</h2>
+            <iframe src="https://www.youtube.com/embed/YOUR_VIDEO_ID3" frameborder="0" allowfullscreen></iframe>
+            <button onclick="toggleDescription('desc3')">More Info</button>
+            <p id="desc3" class="description" style="display: none;">Short description...</p>
+        </div>
+        <div class="video-container">
+            <h2>ASHTANGA</h2>
+            <iframe src="https://www.youtube.com/embed/YOUR_VIDEO_ID4" frameborder="0" allowfullscreen></iframe>
+            <button onclick="toggleDescription('desc4')">More Info</button>
+            <p id="desc4" class="description" style="display: none;">Short description...</p>
+        </div>
     </div>
-</div>
 
+    <div class="calendar-section">
+        <h2>Live Class Calendar</h2>
+        <div id="calendar" style="max-width: 900px; margin: 0 auto;"></div>
+    </div>
 
-<a href="{% url 'home' %}" class="btn-get-started">Back to Home</a>
-<a href="{% url 'update_profile' %}" class="btn-get-started">Update profile</a>
-<form action="{% url 'logout' %}" method="post">
-  {% csrf_token %}
-  <button type="submit">Log Out</button>
-</form>
-{% else %}
-<p>You are not logged in</p>
-<a href="{% url 'login' %}">Log In</a>
-{% endif %}
-{% endblock %}
-      </div>
-      </div>
-      <script>
+    <a href="{% url 'home' %}" class="btn-get-started">Back to Home</a>
+    <a href="{% url 'update_profile' %}" class="btn-get-started">Update profile</a>
+    <form action="{% url 'logout' %}" method="post">
+        {% csrf_token %}
+        <button type="submit">Log Out</button>
+    </form>
+    {% else %}
+    <p>You are not logged in</p>
+    <a href="{% url 'login' %}">Log In</a>
+    {% endif %}
+    {% endblock %}
+    </div>
+
+    <script>
         function toggleDescription(id) {
             var desc = document.getElementById(id);
             if (desc.style.display === "none" || desc.style.display === "") {
@@ -105,4 +95,6 @@
             }
         }
     </script>
-</body></html>
+</body>
+</html>
+Ändringar och förbättringar:

@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Profile, YogaClass, Booking, Comment, Post
+from .models import Profile, YogaClass, Booking, Comment, Post, LiveClass
 from django_summernote.admin import SummernoteModelAdmin
 
 @admin.register(Post)
@@ -13,10 +13,11 @@ class PostAdmin(SummernoteModelAdmin):
 @admin.register(Profile)
 class ProfileAdmin(admin.ModelAdmin):
     list_display = ('user', 'profile_picture')
-
-@admin.register(YogaClass)
-class YogaClassAdmin(admin.ModelAdmin):
-    list_display = ('title', 'date_time', 'type', 'max_members')
+    
+@admin.register(LiveClass)
+class LiveClassAdmin(admin.ModelAdmin):
+    list_display = ('title', 'date', 'time', 'description')
+    search_fields = ('title', 'description')
 
 @admin.register(Booking)
 class BookingAdmin(admin.ModelAdmin):

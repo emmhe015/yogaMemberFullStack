@@ -12,4 +12,5 @@ urlpatterns = [
     path('summernote/', include('django_summernote.urls')),
     path('home_logged_in/', views.home_logged_in, name='home_logged_in'),
     path('profile/update/', views.update_profile, name='update_profile'),
+    path('create/', CreateLiveClassView.as_view(), name='create_live_class'),
 ]

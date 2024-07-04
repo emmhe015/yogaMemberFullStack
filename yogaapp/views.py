@@ -19,7 +19,10 @@ def home(request):
 @login_required
 def home_logged_in(request):
     live_classes = LiveClass.objects.all()
-    return render(request, 'home.html', {'live_classes': live_classes})
+    context = {
+        'live_classes': live_classes
+    }
+    return render(request, 'home.html', context)
 
 
 # login
@@ -76,7 +79,7 @@ def update_profile(request):
         form = ProfileUpdateForm(instance=request.user)
 
     return render(request, 'update_profile.html', {'form': form})
-    
+
 # create liveclass
 class CreateLiveClassView(View):
     def get(self, request):
