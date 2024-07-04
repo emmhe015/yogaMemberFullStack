@@ -289,7 +289,64 @@ iframe {
     background-color: #218838;
 }
 
+/*Liveclass in index.html*/
+
+.yoga-live-classes {
+    text-align: center;
+    padding: 50px 0;
+    background-color: #f4f4f4;
+}
+
+.yoga-live-classes h1 {
+    font-family: 'Amita', serif;
+    font-size: 3em;
+    color: rgb(31, 11, 46);
+    margin-bottom: 30px;
+}
+
+.live-classes-gallery {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.live-class-item {
+    flex: 1 1 calc(25% - 20px); /* Fyra kolumner med 20px gap */
+    box-sizing: border-box;
+    padding: 20px;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.live-class-item img {
+    max-width: 100%;
+    border-radius: 10px;
+    margin-bottom: 10px;
+}
+
+.live-class-item p {
+    font-family: 'Quicksand', sans-serif;
+    font-size: 1em;
+    color: rgb(31, 11, 46);
+}
+
 /* Media queries for responsiveness */
+
+@media (max-width: 768px) {
+    .live-class-item {
+        flex: 1 1 calc(50% - 20px);
+    }
+}
+
+@media (max-width: 480px) {
+    .live-class-item {
+        flex: 1 1 100%; 
+    }
+}
+
 @media (max-width: 768px) {
     .video-section {
         grid-template-columns: 1fr;
