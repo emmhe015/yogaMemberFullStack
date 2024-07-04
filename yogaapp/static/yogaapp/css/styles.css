@@ -244,6 +244,35 @@ iframe {
     height: 315px; 
 }
 
+/* Liveclass section in home.html */
+.live-class {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+.live-class img {
+    max-width: 150px;
+    margin-right: 20px;
+}
+.live-class-content {
+    flex-grow: 1;
+}
+.live-class h2 {
+    margin-top: 0;
+}
+.book-now {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 5px;
+}
+
 @media (max-width: 768px) {
     #video-section {
         grid-template-columns: 1fr; 
