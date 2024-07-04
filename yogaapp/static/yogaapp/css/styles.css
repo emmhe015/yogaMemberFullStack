@@ -170,6 +170,7 @@ p {
     display: flex;
     justify-content: center;
     align-items: center;
+    width: 100%;
 }
 
 .container-register {
@@ -180,25 +181,9 @@ p {
     width: 100%;
     max-width: 30%;
     text-align: center;
+    height: 80vh;
 }
 
-form {
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-}
-
-label {
-    margin: 10px 0 5px;
-    color: rgb(31, 11, 46);
-}
-
-input, select {
-    padding: 10px;
-    margin-bottom: 10px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-}
 
 /* Video section (unchanged) */
 .video-section {
