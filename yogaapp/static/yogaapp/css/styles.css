@@ -245,32 +245,70 @@ iframe {
 }
 
 /* Liveclass section in home.html */
+.content {
+text-align: center;
+max-width: 800px;
+display: flex;
+justify-content: center;
+align-items: center;
+min-height: 100vh;
+background-color: #f4f4f4;
+margin: auto;
+padding: 20px;
+box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+font-family: 'Amita', cursive;
+font-size: 2em;
+margin-bottom: 20px;
+}
+
+.live-classes-list {
+display: flex;
+flex-direction: column;
+gap: 20px;
+}
+
 .live-class {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 20px;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
+display: flex;
+justify-content: space-between;
+align-items: center;
+padding: 15px;
+background: #fafafa;
+border: 1px solid #e0e0e0;
+box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
+
 .live-class img {
-    max-width: 150px;
-    margin-right: 20px;
+max-width: 150px;
+margin-right: 20px;
 }
+
 .live-class-content {
-    flex-grow: 1;
+flex-grow: 1;
+text-align: left;
 }
+
 .live-class h2 {
-    margin-top: 0;
+font-size: 1.5em;
+margin-bottom: 10px;
 }
+
+.live-class p {
+margin-bottom: 10px;
+}
+
 .book-now {
-    background-color: #4CAF50;
-    color: white;
-    padding: 10px 20px;
-    text-align: center;
-    text-decoration: none;
-    border-radius: 5px;
+background-color: #28a745;
+color: #fff;
+padding: 10px 15px;
+text-decoration: none;
+border-radius: 5px;
+}
+
+.book-now:hover {
+background-color: #218838;
 }
 
 @media (max-width: 768px) {

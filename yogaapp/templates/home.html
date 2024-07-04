@@ -67,11 +67,25 @@
         </div>
     </div>
 
-    <div class="calendar-section">
-        <h2>Live Class Calendar</h2>
-        <div id="calendar" style="max-width: 900px; margin: 0 auto;"></div>
+    <div class="content">
+        <h1>Upcoming Liveclasses to book</h1>
+        <div class="live-classes-list">
+            {% for live_class in live_classes %}
+            <div class="live-class">
+                <img src="{% static 'yogaapp/images/live_class_placeholder.jpg' %}" alt="{{ live_class.title }}">
+                <div class="live-class-content">
+                    <h2>{{ live_class.title }}</h2>
+                    <p>Date: {{ live_class.date }}</p>
+                    <p>Time: {{ live_class.time }}</p>
+                    <p>{{ live_class.description|truncatewords:20 }}</p>
+                    <a href="{% url 'live_class_detail' live_class.id %}">Read more</a>
+                </div>
+                <a href="{% url 'book_live_class' live_class.id %}" class="book-now">Book now</a>
+            </div>
+            {% endfor %}
+        </div>
     </div>
-
+    
     <a href="{% url 'home' %}" class="btn-get-started">Back to Home</a>
     <a href="{% url 'update_profile' %}" class="btn-get-started">Update profile</a>
     <form action="{% url 'logout' %}" method="post">

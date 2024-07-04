@@ -211,56 +211,111 @@ button {
 button:hover {
     background-color: #1f0b2e;
 }
-/* yogaclass section in index.html */
-.class-container {
-    display: flex;
-    flex-wrap: nowrap;
-    overflow-x: auto;
-
+/* Videsection in home.html */
+.video-section {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); 
+    gap: 20px; 
+    justify-items: center; 
 }
 
-.class-card {
-    background-color: white;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-    margin: 0 1rem;
-    padding: 1rem;
-    width: 300px;
-    box-sizing: border-box;
-    flex: 0 0 auto;
+.video-container {
+    width: 70%; 
+    box-sizing: border-box; 
+    padding: 10px; 
+}
+
+.video-container h2 {
+    text-align: center; 
+}
+
+.description {
+    display: none; 
     text-align: center;
 }
 
-.class-card img {
-    max-width: 100%;
-    height: auto;
-    border-radius: 5px;
+button {
+    display: block; 
+    margin: 10px auto; 
 }
 
-.class-card h2 {
-    font-size: 1.5rem;
-    margin: 1rem 0;
+iframe {
+    width: 100%; 
+    height: 315px; 
 }
 
-.class-card p {
-    margin: 0.5rem 0;
+/* Liveclass section in home.html */
+.content {
+text-align: center;
+max-width: 800px;
+display: flex;
+justify-content: center;
+align-items: center;
+min-height: 100vh;
+background-color: #f4f4f4;
+margin: auto;
+padding: 20px;
+box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
-.class-card .btn {
-    display: inline-block;
-    margin-top: 1rem;
-    padding: 0.5rem 1rem;
-    background-color: #333;
-    color: white;
-    text-decoration: none;
-    border-radius: 5px;
+h1 {
+font-family: 'Amita', cursive;
+font-size: 2em;
+margin-bottom: 20px;
 }
 
-.class-card .btn:hover {
-    background-color: #555;
+.live-classes-list {
+display: flex;
+flex-direction: column;
+gap: 20px;
 }
 
+.live-class {
+display: flex;
+justify-content: space-between;
+align-items: center;
+padding: 15px;
+background: #fafafa;
+border: 1px solid #e0e0e0;
+box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.live-class img {
+max-width: 150px;
+margin-right: 20px;
+}
+
+.live-class-content {
+flex-grow: 1;
+text-align: left;
+}
+
+.live-class h2 {
+font-size: 1.5em;
+margin-bottom: 10px;
+}
+
+.live-class p {
+margin-bottom: 10px;
+}
+
+.book-now {
+background-color: #28a745;
+color: #fff;
+padding: 10px 15px;
+text-decoration: none;
+border-radius: 5px;
+}
+
+.book-now:hover {
+background-color: #218838;
+}
+
+@media (max-width: 768px) {
+    #video-section {
+        grid-template-columns: 1fr; 
+    }
+}
 /* Responsiv design */
 @media (max-width: 600px) {
     .container-register {
