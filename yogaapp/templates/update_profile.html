@@ -29,10 +29,10 @@
     <div class="background">
       <div class="centered-text">
   <h2>Update Profile</h2>
-  <form method="post">
+  <form method="post" class="update-form">
     {% csrf_token %}
     {{ form.as_p }}
-    <button type="submit">Update</button>
+    <button type="submit" class="btn">Update</button>
   </form>
   {% if messages %}
     <ul>
