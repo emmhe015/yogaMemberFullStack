@@ -184,6 +184,21 @@ p {
     height: 80vh;
 }
 
+.update-profile {
+    background-image: url('../static/images/home.jpg');
+    height: 80vh;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    width: 100%;
+}
+
+
 
 /* Video section (unchanged) */
 .video-section {
