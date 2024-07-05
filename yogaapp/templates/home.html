@@ -78,9 +78,9 @@
                     <p>Date: {{ live_class.date }}</p>
                     <p>Time: {{ live_class.time }}</p>
                     <p>{{ live_class.description|truncatewords:20 }}</p>
-                    <a href="{% url 'live_class_detail' live_class.id %}">Read more</a>
+            
                 </div>
-                <a href="{% url 'book_live_class' live_class.id %}" class="book-now">Book now</a>
+                <a href="{% url 'booking' live_class.id %}" class="book-now">Book now</a>
             </div>
             {% endfor %}
         </div>
