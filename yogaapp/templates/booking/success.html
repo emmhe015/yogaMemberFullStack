@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Success</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'yogaapp/css/styles.css' %}">
+    
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Amita&family=Quicksand&display=swap');
+</style>
+
+</head>
+<body>
+    <nav class="navbar">
+        <div class="navbar-brand">Yoga Studio</div>
+        <div class="navbar-toggle" id="js-navbar-toggle">
+            <span class="navbar-icon">&#9776;</span>
+        </div>
+        <ul class="main-nav" id="js-menu">
+            <li><a href="{% url 'home' %}" class="nav-links">Home</a></li>
+            {% if user.is_authenticated %}
+            <li><a href="{% url 'logout' %}" class="nav-links">Logout</a></li>
+            {% else %}
+            <li><a href="{% url 'login' %}" class="nav-links">Login</a></li>
+            <li><a href="{% url 'register' %}" class="nav-links">Register</a></li>
+            {% endif %}
+        </ul>
+    </nav>
+
+    <div class="login-container">
+        <h1>Congratulations!</h1>
+        <p>You have booked a liveclass, information has been sent to your email! <br>
+        See you soon!</p>
+        <a href="{% url 'home_logged_in' %}" class="btn">My page</a>
+        <a href="{% url 'home' %}" class="btn">Home</a>
+   
+    </div>
+    <footer class="container-footer">
+        <p>&copy; 2024 Yoga Studio. All rights reserved.</p>
+        <p>Contact us at <a href="mailto:info@yogastudio.com">info@yogastudio.com</a></p>
+    </footer>
+    <script>
+        document.getElementById('js-navbar-toggle').addEventListener('click', function() {
+            var menu = document.getElementById('js-menu');
+            menu.classList.toggle('active');
+        });
+    </script>
+</body>
+</html>
