@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Logout</title>
+    <title>Already booked</title>
     {% load static %}
     <link rel="stylesheet" href="{% static 'yogaapp/css/styles.css' %}">
     
@@ -30,11 +30,11 @@
     </nav>
 
     <div class="login-container">
-        <h1>Logged out successfully</h1>
-        <p>Thank yourself for taking time to your wellbeing,<br>
-        hope to see you soon again.</p>
-
-        <a href="{% url 'home' %}" class="btn">Get back home</a>
+        <h1>Already Booked</h1>
+        <p>It seems that you have already booked this class<br>
+            Try to book another one.</p>
+        <a href="{% url 'home_logged_in' %}" class="btn">My page</a>
+        <a href="{% url 'home' %}" class="btn">Home</a>
    
     </div>
     <footer class="container-footer">
