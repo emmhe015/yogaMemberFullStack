@@ -96,6 +96,13 @@
             <textarea name="text" rows="4" cols="50" placeholder="Add your comment"></textarea>
             <button type="submit">Submit</button>
         </form>
+        <div>
+            <!-- showing comments -->
+            {% for comment in live_class.comments.all %}
+                <p>{{ comment.user.username }}: {{ comment.text }}</p>
+            {% endfor %}
+        </div>   
+
     {% endfor %}
 
     </div>
