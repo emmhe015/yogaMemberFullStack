@@ -92,13 +92,12 @@ def booking_view(request, class_id):
 
 
 # comments
-@login_required
 def add_comment(request, class_id):
-    yoga_class = get_object_or_404(YogaClass, id=class_id)
+    live_class = get_object_or_404(Liveclass, id=class_id)
     if request.method == 'POST':
         text = request.POST.get('text')
         if text:
-            Comment.objects.create(user=request.user, yoga_class=yoga_class, text=text)
+            Comment.objects.create(user=request.user, live_class=live_class, text=text)
             messages.success(request, 'Comment added successfully!')
         else:
             messages.error(request, 'Comment cannot be empty.')
