@@ -283,6 +283,35 @@ iframe {
     background-color: #218838;
 }
 
+/*Comment section in home.html*/
+
+.liveclass-container {
+    margin-bottom: 2rem; 
+    text-align: center; 
+}
+
+.liveclass-title {
+    margin-bottom: 1rem;
+}
+
+.comment-section {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start; 
+}
+
+.comment-form {
+    width: 45%; 
+    text-align: left; 
+}
+
+.comment-list {
+    width: 45%; 
+    text-align: left; 
+    border-left: 1px solid #ccc; 
+    padding-left: 1rem; 
+}
+
 /*Liveclass in index.html*/
 
 .yoga-live-classes {

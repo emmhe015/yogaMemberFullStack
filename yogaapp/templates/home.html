@@ -88,22 +88,25 @@
             </div>
             {% endfor %}
         </div>
-        <h1>Comments about the liveclasses;</h1>
+        <h1>Comments about the liveclasses</h1>
         {% for live_class in live_classes %}
-        <h2>{{ live_class.title }}</h2>
-        <form method="POST" action="{% url 'add_comment' live_class.id %}">
-            {% csrf_token %}
-            <textarea name="text" rows="4" cols="50" placeholder="Add your comment"></textarea>
-            <button type="submit">Submit</button>
-        </form>
-        <div>
-            <!-- showing comments -->
-            {% for comment in live_class.comments.all %}
-                <p>{{ comment.user.username }}: {{ comment.text }}</p>
-            {% endfor %}
-        </div>   
-
-    {% endfor %}
+            <div class="liveclass-container">
+                <h2 class="liveclass-title">{{ live_class.title }}</h2>
+                <div class="comment-section">
+                    <form method="POST" action="{% url 'add_comment' live_class.id %}" class="comment-form">
+                        {% csrf_token %}
+                        <textarea name="text" rows="4" cols="50" placeholder="Add your comment"></textarea>
+                        <button type="submit">Submit</button>
+                    </form>
+                    <div class="comment-list">
+                        
+                        {% for comment in live_class.comments.all %}
+                            <p>{{ comment.user.username }}: {{ comment.text }}</p>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
 
     </div>
     
