@@ -51,13 +51,12 @@ class Booking(models.Model):
 
 class Comment(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
-    yoga_class = models.ForeignKey(YogaClass, on_delete=models.CASCADE, related_name='comments')
+    live_class = models.ForeignKey(LiveClass, on_delete=models.CASCADE, related_name='comments')
     text = models.TextField()
     created_at = models.DateTimeField(auto_now_add=True)
-    updated_at = models.DateTimeField(auto_now=True)
 
     def __str__(self):
-        return f'Comment by {self.user.username} on {self.yoga_class.title}'
+        return f'Comment by {self.user} on {self.live_class}'
 
 STATUS_CHOICES = (
     ('draft', 'Draft'),
