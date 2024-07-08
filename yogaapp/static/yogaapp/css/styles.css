@@ -306,7 +306,6 @@ iframe {
 }
 
 .comment-list {
-    width: 45%; 
     text-align: left; 
     border-left: 1px solid #ccc; 
     padding-left: 1rem; 
