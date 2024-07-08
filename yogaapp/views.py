@@ -1,6 +1,6 @@
 from django.shortcuts import render
 
-from django.shortcuts import render, redirect, get_object_or_404
+from django.shortcuts import render, redirect, reverse, get_object_or_404
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.contrib.auth.decorators import login_required
@@ -101,7 +101,7 @@ def add_comment(request, class_id):
             messages.success(request, 'Comment added successfully!')
         else:
             messages.error(request, 'Comment cannot be empty.')
-    return redirect('home.html')
+    return redirect(reverse('home_logged_in'))
 
 def logout_view(request):
     logout(request)
