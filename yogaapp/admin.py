@@ -33,4 +33,4 @@ class BookingAdmin(admin.ModelAdmin):
 
 @admin.register(Comment)
 class CommentAdmin(admin.ModelAdmin):
-    list_display = ('user', 'yoga_class', 'text', 'created_at')
+    list_display = ('user', 'live_class', 'text', 'created_at')
