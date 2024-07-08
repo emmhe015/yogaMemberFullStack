@@ -182,6 +182,7 @@ p {
     width: 100%;
     max-width: 30%;
     text-align: center;
+    height: 100vh;
 }
 
 form {
