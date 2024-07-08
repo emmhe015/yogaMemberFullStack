@@ -45,18 +45,13 @@ def login_view(request):
 def register_view(request):
     if request.method == 'POST':
         user_form = UserRegisterForm(request.POST)
-        profile_form = ProfileUpdateForm(request.POST, request.FILES)
-        if user_form.is_valid() and profile_form.is_valid():
+        if user_form.is_valid():
             user = user_form.save()
-            profile = profile_form.save(commit=False)
-            profile.user = user
-            profile.save()
             login(request, user, backend='django.contrib.auth.backends.ModelBackend')
-            return redirect('home_logged_in') 
+            return redirect('home_logged_in')
     else:
         user_form = UserRegisterForm()
-        profile_form = ProfileUpdateForm()
-    return render(request, 'register.html', {'user_form': user_form, 'profile_form': profile_form})
+    return render(request, 'register.html', {'user_form': user_form})
 
 # update profile
 @login_required
