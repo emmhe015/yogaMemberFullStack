@@ -8,7 +8,7 @@ urlpatterns = [
     path('logout/', auth_views.LogoutView.as_view(template_name='logout.html'), name='logout'),
     path('register/', views.register_view, name='register'),
     path('booking/<int:class_id>/', views.booking_view, name='booking'),
-    path('comment/<int:class_id>/', views.add_comment, name='add_comment'),
+    path('add_comment/<int:class_id>/', views.add_comment, name='add_comment'),
     path('summernote/', include('django_summernote.urls')),
     path('home_logged_in/', views.home_logged_in, name='home_logged_in'),
     path('profile/update/', views.update_profile, name='update_profile'),

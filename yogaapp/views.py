@@ -93,7 +93,7 @@ def booking_view(request, class_id):
 
 # comments
 def add_comment(request, class_id):
-    live_class = get_object_or_404(Liveclass, id=class_id)
+    live_class = get_object_or_404(LiveClass, id=class_id)
     if request.method == 'POST':
         text = request.POST.get('text')
         if text:
@@ -101,7 +101,7 @@ def add_comment(request, class_id):
             messages.success(request, 'Comment added successfully!')
         else:
             messages.error(request, 'Comment cannot be empty.')
-    return redirect('home')
+    return redirect('home.html')
 
 def logout_view(request):
     logout(request)

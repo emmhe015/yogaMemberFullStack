@@ -88,6 +88,16 @@
             </div>
             {% endfor %}
         </div>
+        <h1>Comments about the liveclasses;</h1>
+        {% for live_class in live_classes %}
+        <h2>{{ live_class.title }}</h2>
+        <form method="POST" action="{% url 'add_comment' live_class.id %}">
+            {% csrf_token %}
+            <textarea name="text" rows="4" cols="50" placeholder="Add your comment"></textarea>
+            <button type="submit">Submit</button>
+        </form>
+    {% endfor %}
+
     </div>
     
     <a href="{% url 'home' %}" class="btn">Back to Home</a>
