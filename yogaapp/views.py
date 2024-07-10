@@ -4,7 +4,7 @@ from django.shortcuts import render, redirect, reverse, get_object_or_404
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.contrib.auth.decorators import login_required
-from .models import YogaClass, LiveClass, Booking, Comment
+from .models import LiveClass, Booking, Comment
 from django.contrib import messages
 from .forms import UserRegisterForm, ProfileUpdateForm
 from django.core.mail import send_mail
@@ -12,8 +12,8 @@ from django.core.mail import send_mail
 
 # homepage
 def home(request):
-    yoga_classes = YogaClass.objects.all()
-    return render(request, 'index.html', {'yoga_classes': yoga_classes})
+    
+    return render(request, 'index.html')
 
 # homepage for logged in
 @login_required

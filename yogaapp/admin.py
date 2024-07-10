@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Profile, YogaClass, Booking, Comment, Post, LiveClass
+from .models import Profile, Booking, Comment, Post, LiveClass
 from django_summernote.admin import SummernoteModelAdmin
 
 @admin.register(Post)

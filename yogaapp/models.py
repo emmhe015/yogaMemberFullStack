@@ -9,28 +9,6 @@ class Profile(models.Model):
     def __str__(self):
         return self.user.username
 
-class YogaClass(models.Model):
-    HATHA = 'Hatha'
-    VINYASA = 'Vinyasa'
-    ASHTANGA = 'Ashtanga'
-    BEGINNERS = 'Beginners'
-    
-    CLASS_TYPES = [
-        (HATHA, 'Hatha'),
-        (VINYASA, 'Vinyasa'),
-        (ASHTANGA, 'Ashtanga'),
-        (BEGINNERS, 'Beginners'),
-    ]
-
-    title = models.CharField(max_length=100)
-    date_time = models.DateTimeField()
-    description = models.TextField()
-    type = models.CharField(max_length=20, choices=CLASS_TYPES)
-    max_members = models.IntegerField(default=20)
-    image = models.ImageField(upload_to='class_images/', blank=True, null=True)
-
-    def __str__(self):
-        return f'{self.title} - {self.type}'
 
 class LiveClass(models.Model):
     title = models.CharField(max_length=100)
