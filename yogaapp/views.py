@@ -83,6 +83,7 @@ def booking_view(request, class_id):
             'Booking Confirmation',
             f'You have booked {live_class.title} on {live_class.date} at {live_class.time}.',
             'from@example.com',
+            settings.DEFAULT_FROM_EMAIL,
             [request.user.email],
             fail_silently=False,
         )
