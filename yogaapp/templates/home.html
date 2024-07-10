@@ -102,6 +102,12 @@
                         
                         {% for comment in live_class.comments.all %}
                             <p>{{ comment.user.username }}: {{ comment.text }}</p>
+                            {% if comment.user == request.user %}
+                            <form method="POST" action="{% url 'delete_comment' comment.id %}" style="display:inline;">
+                                {% csrf_token %}
+                                <button type="submit" class="delete-button">Delete</button>
+                            </form>
+                        {% endif %}
                         {% endfor %}
                     </div>
                 </div>
