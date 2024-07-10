@@ -92,6 +92,7 @@ def booking_view(request, class_id):
 
 
 # comments
+@login_required
 def add_comment(request, class_id):
     live_class = get_object_or_404(LiveClass, id=class_id)
     if request.method == 'POST':
@@ -102,6 +103,16 @@ def add_comment(request, class_id):
         else:
             messages.error(request, 'Comment cannot be empty.')
     return redirect(reverse('home_logged_in'))
+
+@login_required
+def delete_comment(request, comment_id):
+    comment = get_object_or_404(Comment, id=comment_id)
+    if comment.user == request.user:
+        comment.delete()
+        messages.success(request, 'Comment deleted successfully!')
+    else:
+        messages.error(request, 'You do not have permission to delete this comment.')
+    return redirect('home_logged_in')
 
 def logout_view(request):
     logout(request)
