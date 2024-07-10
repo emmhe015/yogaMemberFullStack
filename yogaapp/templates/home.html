@@ -113,6 +113,13 @@
                 </div>
             </div>
         {% endfor %}
+        {% if messages %}
+        <ul>
+            {% for message in messages %}
+                <li class="{{ message.tags }}">{{ message }}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
 
     </div>
     
