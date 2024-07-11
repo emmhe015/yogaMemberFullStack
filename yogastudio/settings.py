@@ -102,13 +102,6 @@ TEMPLATES = [
 LOGIN_REDIRECT_URL = "start" 
 LOGIN_URL = 'login'
 
-EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_PORT = 587
-EMAIL_USE_TLS = True
-EMAIL_HOST_USER = 'henrikssone.91@gmail.com'
-EMAIL_HOST_PASSWORD = 'henrics16NK!'
-DEFAULT_FROM_EMAIL = 'henrikssone.91@gmail.com'
 
 WSGI_APPLICATION = 'yogastudio.wsgi.application'
 
@@ -178,3 +171,12 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+EMAIL_USE_SSL = False
+EMAIL_HOST_USER = 'henrikssone.91@gmail.com'
+EMAIL_HOST_PASSWORD = 'ijpiyyhpqkwauqto'
+DEFAULT_FROM_EMAIL = 'henrikssone.91@gmail.com'

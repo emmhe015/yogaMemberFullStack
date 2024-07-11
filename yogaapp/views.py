@@ -1,7 +1,7 @@
 from django.shortcuts import render
-
 from django.shortcuts import render, redirect, reverse, get_object_or_404
 from django.contrib.auth import authenticate, login, logout
+from django.conf import settings
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.contrib.auth.decorators import login_required
 from .models import LiveClass, Booking, Comment
@@ -82,7 +82,6 @@ def booking_view(request, class_id):
         send_mail(
             'Booking Confirmation',
             f'You have booked {live_class.title} on {live_class.date} at {live_class.time}.',
-            'from@example.com',
             settings.DEFAULT_FROM_EMAIL,
             [request.user.email],
             fail_silently=False,
