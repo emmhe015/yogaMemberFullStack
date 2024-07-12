@@ -9,7 +9,6 @@ from django.contrib import messages
 from .forms import UserRegisterForm, ProfileUpdateForm
 from django.core.mail import send_mail
 from django.core.mail import EmailMessage
-from backend.settings import EMAIL_HOST_USER
 
 
 # homepage
@@ -76,18 +75,10 @@ def update_profile(request):
 
 
 # booking
-@login_required
 def booking_view(request, class_id):
     live_class = get_object_or_404(LiveClass, id=class_id)
     booking, created = Booking.objects.get_or_create(user=request.user, live_class=live_class)
     if created:
-        send_mail(
-            'Booking Confirmation',
-            f'You have booked {live_class.title} on {live_class.date} at {live_class.time}.',
-            settings.DEFAULT_FROM_EMAIL,
-            [request.user.email],
-            fail_silently=False,
-        )
         return render(request, 'booking/success.html', {'live_class': live_class})
     else:
         return render(request, 'booking/already_booked.html', {'live_class': live_class})
