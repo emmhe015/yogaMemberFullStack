@@ -90,6 +90,15 @@ def booking_view(request, class_id):
     else:
         return render(request, 'booking/already_booked.html', {'live_class': live_class})
 
+@login_required
+def cancel_booking(request, class_id):
+    try:
+        booking = Booking.objects.get(user=request.user, live_class_id=class_id)
+        booking.delete()
+    except Booking.DoesNotExist:
+        pass
+    return redirect('home_logged_in')
+
 
 # comments
 @login_required
