@@ -98,19 +98,6 @@ p {
     text-align: center;
 }
 
-.btn-cancel {
-    display: inline-block;
-    margin-top: 10px;
-    padding: 5px 10px;
-    background-color: rgb(31, 11, 46);
-    color: white;
-    text-decoration: none;
-    font-size: 0.8em;
-    border-radius: 2.5px;
-    transition: background-color 0.3s;
-    text-align: center;
-}
-
 .btn:hover {
     background-color: rgb(41, 21, 56);
 }
@@ -272,7 +259,6 @@ iframe {
 
 .live-class-content {
     flex-grow: 1;
-    text-align: left;
 }
 
 .live-class h2 {

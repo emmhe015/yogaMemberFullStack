@@ -49,6 +49,12 @@
             <ul>
                 {% for live_class in booked_classes %}
                     <li>{{ live_class.title }} on {{ live_class.date }} at {{ live_class.time }}
+                        <div class="image-container">
+                            {% if live_class.featured_image %}
+                                <img class="card-img-top" src="{{ live_class.featured_image.url }}" alt="{{ live_class.title }}">
+                            {% else %}
+                                <img class="card-img-top" src="{% static 'images/default.jpg' %}" alt="default image">
+                            {% endif %}
                         <form method="post" action="{% url 'cancel_booking' live_class.id %}" style="display:inline;" onsubmit="return confirm('Are you sure you want to cancel this booking?');">
                             {% csrf_token %}
                             <button type="submit" class="book-now">Cancel Booking</button>
@@ -66,23 +72,21 @@
         <div class="live-classes-list">
             {% for live_class in live_classes %}
             <div class="live-class">
-                <div class="image-container">
-                    {% if "placeholder" in post.featured_image.url %}
-                    <img class="card-img-top" src="{% static 'images/default.jpg' %}"
-                      alt="placeholder image">
-                    {% else %}
-                    <img class="card-img-top" src=" {{ post.featured_image.url }}"
-                      alt="{{ post.title }}">
-                    {% endif %}
-        
                 <div class="live-class-content">
                     <h2>{{ live_class.title }}</h2>
+                    <div class="image-container">
+                        {% if live_class.featured_image %}
+                            <img class="card-img-top" src="{{ live_class.featured_image.url }}" alt="{{ live_class.title }}">
+                        {% else %}
+                            <img class="card-img-top" src="{% static 'images/default.jpg' %}" alt="default image">
+                        {% endif %}
+                </div>
                     <p>Date: {{ live_class.date }}</p>
                     <p>Time: {{ live_class.time }}</p>
                     <p>{{ live_class.description|truncatewords:20 }}</p>
-            
-                </div>
+
                 <a href="{% url 'booking' live_class.id %}" class="book-now">Book now</a>
+            </div>
             </div>
             {% endfor %}
         </div>
