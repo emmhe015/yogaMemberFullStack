@@ -51,7 +51,7 @@
                     <li>{{ live_class.title }} on {{ live_class.date }} at {{ live_class.time }}
                         <form method="post" action="{% url 'cancel_booking' live_class.id %}" style="display:inline;" onsubmit="return confirm('Are you sure you want to cancel this booking?');">
                             {% csrf_token %}
-                            <button type="submit">Cancel Booking</button>
+                            <button type="submit" class="book-now">Cancel Booking</button>
                         </form>
                     </li>
                 {% endfor %}
@@ -86,7 +86,7 @@
                     <form method="POST" action="{% url 'add_comment' live_class.id %}" class="comment-form">
                         {% csrf_token %}
                         <textarea name="text" rows="4" cols="50" placeholder="Add your comment"></textarea>
-                        <button type="submit">Submit</button>
+                        <button type="submit" class="book-now">Submit</button>
                     </form>
                     <div class="comment-list">
                         
