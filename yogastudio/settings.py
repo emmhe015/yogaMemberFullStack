@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'cloudinary_storage',
     'django.contrib.admin',
     "accounts",
     'django_cleanup.apps.CleanupConfig',  # Ensure to clean up image files
@@ -50,6 +51,7 @@ INSTALLED_APPS = [
     'allauth.socialaccount',
     'allauth.socialaccount.providers.google',  # Add any social provider
     'django_summernote',
+    'cloudinary',
     'crispy_forms',
     'bootstrap_datepicker_plus',
     'yogaapp',
