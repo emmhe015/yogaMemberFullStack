@@ -66,6 +66,14 @@
         <div class="live-classes-list">
             {% for live_class in live_classes %}
             <div class="live-class">
+                <div class="image-container">
+                    {% if "placeholder" in post.featured_image.url %}
+                    <img class="card-img-top" src="{% static 'images/default.jpg' %}"
+                      alt="placeholder image">
+                    {% else %}
+                    <img class="card-img-top" src=" {{ post.featured_image.url }}"
+                      alt="{{ post.title }}">
+                    {% endif %}
         
                 <div class="live-class-content">
                     <h2>{{ live_class.title }}</h2>

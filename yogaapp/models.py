@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
+from cloudinary.models import CloudinaryField
 
 
 class Profile(models.Model):
@@ -15,6 +16,7 @@ class LiveClass(models.Model):
     date = models.DateField()
     time = models.TimeField()
     description = models.TextField()
+    featured_image = CloudinaryField('image', default='placeholder')
 
     def __str__(self):
         return self.title
