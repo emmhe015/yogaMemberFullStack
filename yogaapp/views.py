@@ -8,6 +8,8 @@ from .models import LiveClass, Booking, Comment
 from django.contrib import messages
 from .forms import UserRegisterForm, ProfileUpdateForm
 from django.core.mail import send_mail
+from django.core.mail import EmailMessage
+from backend.settings import EMAIL_HOST_USER
 
 
 # homepage
