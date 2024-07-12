@@ -17,10 +17,17 @@ def home(request):
     return render(request, 'index.html')
 
 # homepage for logged in
-@login_required
 def home_logged_in(request):
     live_classes = LiveClass.objects.all().order_by('date', 'time')
-    return render(request, 'home.html', {'live_classes': live_classes})
+    user_bookings = Booking.objects.filter(user=request.user)
+    booked_classes = [booking.live_class for booking in user_bookings]
+    
+    context = {
+        'live_classes': live_classes,
+        'booked_classes': booked_classes
+    }
+    
+    return render(request, 'home.html', context)
 
 
 # login
