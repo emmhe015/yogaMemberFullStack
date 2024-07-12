@@ -48,7 +48,12 @@
         {% if booked_classes %}
             <ul>
                 {% for live_class in booked_classes %}
-                    <li>{{ live_class.title }} on {{ live_class.date }} at {{ live_class.time }}</li>
+                    <li>{{ live_class.title }} on {{ live_class.date }} at {{ live_class.time }}
+                        <form method="post" action="{% url 'cancel_booking' live_class.id %}" style="display:inline;" onsubmit="return confirm('Are you sure you want to cancel this booking?');">
+                            {% csrf_token %}
+                            <button type="submit">Cancel Booking</button>
+                        </form>
+                    </li>
                 {% endfor %}
             </ul>
         {% else %}
