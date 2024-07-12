@@ -293,19 +293,13 @@ iframe {
     margin-bottom: 1rem;
 }
 
-.comment-section {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start; 
-}
 
 .comment-form {
-    width: 45%; 
-    text-align: left; 
+    width: 45%;  
 }
 
 .comment-list {
-    text-align: left; 
+    
     border-left: 1px solid #ccc; 
     padding-left: 1rem; 
 }
