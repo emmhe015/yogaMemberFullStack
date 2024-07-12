@@ -43,6 +43,19 @@
             Keep scrolling down to book a liveclass or watch a video right now.</p>
         </div>
     </div>
+    <div>
+        <h2>Your Booked Live Classes</h2>
+        {% if booked_classes %}
+            <ul>
+                {% for live_class in booked_classes %}
+                    <li>{{ live_class.title }} on {{ live_class.date }} at {{ live_class.time }}</li>
+                {% endfor %}
+            </ul>
+        {% else %}
+            <p>You have no booked live classes.</p>
+        {% endif %}
+    </div>
+
 
     <div class="video-section">
         <div class="video-container">
