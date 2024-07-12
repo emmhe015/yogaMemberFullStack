@@ -1,7 +1,5 @@
 /* General reset */
 body, html {
-    height: 100%;
-    margin: 0;
     padding: 0;
     box-sizing: border-box;
     font-family: 'Quicksand', sans-serif;
@@ -11,7 +9,6 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
     background-color: #f4f4f4;
 }
 
@@ -57,7 +54,7 @@ body {
 /* Background section */
 .background {
     background-image: url('../static/images/home.jpg');
-    height: 100vh;
+    height: 90vh;
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -156,6 +153,7 @@ p {
     align-items: center;
     justify-content: center;
     text-align: center;
+    width: 100%;
 }
 
 .login-container h1 {
@@ -172,10 +170,11 @@ p {
     display: flex;
     justify-content: center;
     align-items: center;
+    width: 100%;
 }
 
 .container-register {
-    background-color: rgba(242, 227, 255, 0.199);
+    background-color: rgba(211, 205, 247, 0.199);
     padding: 20px;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -183,25 +182,17 @@ p {
     max-width: 30%;
     text-align: center;
     height: 100vh;
-}
-
-form {
     display: flex;
     flex-direction: column;
-    width: 100%;
+    align-items: center;
 }
 
-label {
-    margin: 10px 0 5px;
-    color: rgb(31, 11, 46);
+.update-form {
+    display: flex;
+    flex-direction: column;   
 }
 
-input, select {
-    padding: 10px;
-    margin-bottom: 10px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-}
+
 
 /* Video section (unchanged) */
 .video-section {
@@ -292,7 +283,103 @@ iframe {
     background-color: #218838;
 }
 
+/*Comment section in home.html*/
+
+.liveclass-container {
+    margin-bottom: 2rem; 
+    text-align: center; 
+}
+
+.liveclass-title {
+    margin-bottom: 1rem;
+}
+
+.comment-section {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start; 
+}
+
+.comment-form {
+    width: 45%; 
+    text-align: left; 
+}
+
+.comment-list {
+    text-align: left; 
+    border-left: 1px solid #ccc; 
+    padding-left: 1rem; 
+}
+
+/*Liveclass in index.html*/
+
+.yoga-live-classes {
+    text-align: center;
+    background-color: #f4f4f4;
+}
+
+.yoga-live-classes h1 {
+    font-family: 'Amita', serif;
+    font-size: 3em;
+    color: rgb(31, 11, 46);
+    margin-bottom: 30px;
+}
+
+.live-classes-gallery {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.live-class-item {
+    flex: 1 1 calc(25% - 20px); /* Fyra kolumner med 20px gap */
+    box-sizing: border-box;
+    padding: 20px;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.live-class-item img {
+    max-width: 100%;
+    border-radius: 10px;
+    margin-bottom: 10px;
+}
+
+.live-class-item p {
+    font-family: 'Quicksand', sans-serif;
+    font-size: 1em;
+    color: rgb(31, 11, 46);
+}
+
+.container-footer {
+    background-image: url('../static/images/footer.jpg');
+    height: 300px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    }
+
 /* Media queries for responsiveness */
+
+@media (max-width: 768px) {
+    .live-class-item {
+        flex: 1 1 calc(50% - 20px);
+    }
+}
+
+@media (max-width: 480px) {
+    .live-class-item {
+        flex: 1 1 100%; 
+    }
+}
+
 @media (max-width: 768px) {
     .video-section {
         grid-template-columns: 1fr;

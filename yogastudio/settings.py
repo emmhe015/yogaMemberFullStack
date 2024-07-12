@@ -27,7 +27,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = os.environ.get("SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['8000-emmhe015-yogamemberfull-r38pj0e6pmx.ws-eu115.gitpod.io', '127.0.0.1', 'localhost', '127.0.0.1:8000/admin/', '.herokuapp.com',
 ]
@@ -169,6 +169,7 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = [BASE_DIR / "yogaapp/static",]
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
