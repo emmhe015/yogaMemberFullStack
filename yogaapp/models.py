@@ -38,21 +38,4 @@ class Comment(models.Model):
     def __str__(self):
         return f'Comment by {self.user} on {self.live_class}'
 
-STATUS_CHOICES = (
-    ('draft', 'Draft'),
-    ('published', 'Published'),
-)
 
-class Post(models.Model):
-    title = models.CharField(max_length=200)
-    slug = models.SlugField(max_length=200, unique=True)
-    content = models.TextField()
-    created_at = models.DateTimeField(auto_now_add=True)
-    updated_at = models.DateTimeField(auto_now=True)
-    status = models.CharField(max_length=10, choices=STATUS_CHOICES, default='draft')
-
-    def __str__(self):
-        return self.title
-
-    class Meta:
-        ordering = ['-created_at']
