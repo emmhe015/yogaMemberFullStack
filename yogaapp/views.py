@@ -30,6 +30,19 @@ def home(request):
 
 # homepage for logged in
 def home_logged_in(request):
+    """
+    Render the homepage for logged-in users, showing all live classes and user's booked classes.
+
+    Models:
+        - LiveClass: Retrieves all live classes.
+        - Booking: Retrieves bookings for the logged-in user.
+
+    Args:
+        request (HttpRequest): The request object.
+
+    Returns:
+        HttpResponse: The rendered homepage for logged-in users.
+    """
     live_classes = LiveClass.objects.all().order_by('date', 'time')
     user_bookings = Booking.objects.filter(user=request.user)
     booked_classes = [booking.live_class for booking in user_bookings]
