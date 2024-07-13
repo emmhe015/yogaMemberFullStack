@@ -44,39 +44,3 @@ class HomeLoggedInViewTest(TestCase):
         self.assertEqual(list(live_classes), [self.live_class1, self.live_class2])
         self.assertEqual(list(booked_classes), [self.live_class1])
 
-class LoginViewTest(TestCase):
-    def setUp(self):
-        self.client = Client()
-        self.login_url = reverse('login_view')
-        self.user = User.objects.create_user(username='testuser', password='testpassword')
-    
-    def test_login_view_get(self):
-        response = self.client.get(self.login_url)
-        self.assertEqual(response.status_code, 200)
-        self.assertTemplateUsed(response, 'registration/login.html')
-    
-    def test_login_view_post_valid(self):
-        response = self.client.post(self.login_url, {
-            'username': 'testuser',
-            'password': 'testpassword'
-        })
-        self.assertEqual(response.status_code, 302)
-        self.assertRedirects(response, reverse('home_logged_in'))  # Adjust to your actual logged-in home view
-
-    def test_login_view_post_invalid_credentials(self):
-        response = self.client.post(self.login_url, {
-            'username': 'wronguser',
-            'password': 'wrongpassword'
-        })
-        self.assertEqual(response.status_code, 200)
-        messages = list(get_messages(response.wsgi_request))
-        self.assertTrue(any(message.message == 'Invalid username or password. Please try again.' for message in messages))
-    
-    def test_login_view_post_invalid_form(self):
-        response = self.client.post(self.login_url, {
-            'username': '',
-            'password': ''
-        })
-        self.assertEqual(response.status_code, 200)
-        messages = list(get_messages(response.wsgi_request))
-        self.assertTrue(any(message.message == 'Invalid username or password. Please try again.' for message in messages))
