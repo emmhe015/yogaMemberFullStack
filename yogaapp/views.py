@@ -77,12 +77,13 @@ def login_view(request):
                 login(request, user)
                 return redirect('home_logged_in')
             else:
-                messages.error(request, 'Invalid username or password')
+                messages.error(request, 'Invalid username or password. Please try again.')
         else:
-            messages.error(request, 'Invalid username or password')
+            messages.error(request, 'Invalid username or password. Please try again.')
     else:
         form = AuthenticationForm()
-    return render(request, '/login.html', {'form': form})
+    
+    return render(request, 'login.html', {'form': form})
 
 # registration
 def register_view(request):

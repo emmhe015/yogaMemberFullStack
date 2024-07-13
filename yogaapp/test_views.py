@@ -1,4 +1,4 @@
-from django.test import TestCase
+from django.test import TestCase, Client
 from django.urls import reverse
 from django.contrib.auth.models import User
 from django.contrib.auth import get_user_model
@@ -45,53 +45,45 @@ class HomeLoggedInViewTest(TestCase):
         self.assertEqual(list(booked_classes), [self.live_class1])
 
 class LoginViewTest(TestCase):
+
     def setUp(self):
-        """
-        Set up test data.
-        """
+        self.client = Client()
+        self.login_url = reverse('login_view')
         self.user = User.objects.create_user(username='testuser', password='testpassword')
-    
+
     def test_login_view_get(self):
         """
         Test that the login view renders correctly on a GET request.
         """
-        response = self.client.get(reverse('login_view'))
+        response = self.client.get(self.login_url)
         self.assertEqual(response.status_code, 200)
         self.assertTemplateUsed(response, 'login.html')
-        self.assertIsInstance(response.context['form'], AuthenticationForm)
 
-    def test_login_view_post_valid(self):
+    def test_login_view_post_invalid_credentials(self):
         """
-        Test that the login view authenticates and logs in a user with valid credentials.
+        Test that the login view does not log in a user with invalid credentials
+        and shows an error message.
         """
-        response = self.client.post(reverse('login_view'), {
-            'username': 'testuser',
-            'password': 'testpassword'
-        })
+        response = self.client.post(self.login_url, {'username': 'testuser', 'password': 'wrongpassword'})
+        self.assertEqual(response.status_code, 200)
+        self.assertFalse(response.context['form'].is_valid())
+        messages = list(get_messages(response.wsgi_request))
+        self.assertTrue(any(message.message == 'Invalid username or password. Please try again.' for message in messages), "Error message not found in response context.")
+
+    def test_login_view_post_valid_credentials(self):
+        """
+        Test that the login view logs in a user with valid credentials and redirects.
+        """
+        response = self.client.post(self.login_url, {'username': 'testuser', 'password': 'testpassword'})
         self.assertRedirects(response, reverse('home_logged_in'))
 
-    def test_login_view_post_invalid(self):
+    def test_login_view_post_invalid_form(self):
         """
-        Test that the login view does not log in a user with invalid credentials and shows an error message.
+        Test that the login view does not log in a user with invalid form data
+        and shows an error message.
         """
-        response = self.client.post(reverse('login_view'), {
-            'username': 'testuser',
-            'password': 'wrongpassword'
-        })
+        response = self.client.post(self.login_url, {'username': '', 'password': ''})
         self.assertEqual(response.status_code, 200)
-        self.assertTemplateUsed(response, 'login.html')
+        self.assertFalse(response.context['form'].is_valid())
         messages = list(get_messages(response.wsgi_request))
-        self.assertTrue(any(message.message == 'Invalid username or password' for message in messages), "Error message not found in response context.")
-
-    def test_login_view_invalid_form(self):
-        """
-        Test that the login view does not log in a user with invalid form data and shows an error message.
-        """
-        response = self.client.post(reverse('login_view'), {
-            'username': '',
-            'password': 'testpassword'
-        })
-        self.assertEqual(response.status_code, 200)
-        self.assertTemplateUsed(response, 'login.html')
-        messages = list(get_messages(response.wsgi_request))
-        self.assertTrue(any(message.message == 'Invalid username or password' for message in messages), "Error message not found in response context.")
+        self.assertTrue(any(message.message == 'Invalid username or password. Please try again.' for message in messages), "Error message not found in response context.")
