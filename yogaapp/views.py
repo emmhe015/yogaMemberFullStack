@@ -239,5 +239,14 @@ def delete_comment(request, comment_id):
     return redirect('home_logged_in')
 
 def logout_view(request):
+    """
+    Handle user logout.
+
+    Args:
+        request (HttpRequest): The request object.
+
+    Returns:
+        HttpResponseRedirect: Redirect to the logout page.
+    """
     logout(request)
     return redirect('logout.html')
