@@ -1,0 +1,417 @@
+/* General reset */
+body, html {
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Quicksand', sans-serif;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #f4f4f4;
+}
+
+/* Navbar styling */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: white;
+    padding: 10px 20px;
+    width: 100%;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.navbar-brand {
+    font-size: 1.5em;
+    color: rgb(31, 11, 46);
+}
+
+.navbar-toggle {
+    display: none;
+    font-size: 1.5em;
+    cursor: pointer;
+}
+
+.main-nav {
+    list-style: none;
+    display: flex;
+    margin: 0;
+    padding: 0;
+}
+
+.main-nav li {
+    margin-left: 20px;
+}
+
+.nav-links {
+    text-decoration: none;
+    color: rgb(31, 11, 46);
+    font-size: 1.2em;
+}
+
+/* Background section */
+.background {
+    background-image: url("../static/images/home.904b74e7351a.jpg");
+    height: 90vh;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+
+.centered-text {
+    color: rgb(31, 11, 46);
+    text-align: center;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+/* Heading styling */
+h1 {
+    font-family: "Amita", serif;
+    font-size: 3em;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+/* Paragraph styling */
+p {
+    font-size: 1em;
+    margin-bottom: 10px;
+}
+
+/* Button styling */
+.btn {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 10px 20px;
+    background-color: rgb(31, 11, 46);
+    color: white;
+    text-decoration: none;
+    font-size: 1.2em;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+    text-align: center;
+}
+
+.btn:hover {
+    background-color: rgb(41, 21, 56);
+}
+
+/* Specific button classes */
+.btn-get-started,
+.btn-login,
+.book-now {
+    background-color: rgb(31, 11, 46);
+}
+
+.btn-get-started:hover,
+.btn-login:hover,
+.book-now:hover {
+    background-color: rgb(41, 21, 56);
+}
+
+/* Testimonials styling */
+.testimonials {
+    padding: 40px 20px;
+    text-align: center;
+    color: rgb(31, 11, 46);
+}
+
+.testimonials-container {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.testimonial {
+    background: rgba(253, 105, 7, 0.7);
+    padding: 20px;
+    border-radius: 10px;
+    max-width: 200px;
+    margin: 10px;
+}
+
+.testimonial p {
+    margin: 0 0 10px;
+}
+
+/* Login page styling */
+.login-container {
+    background-image: url("../static/images/home.904b74e7351a.jpg");
+    height: 80vh;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    width: 100%;
+}
+
+.login-container h1 {
+    color: rgb(31, 11, 46);
+}
+
+/* Register page styling */
+.background-register {
+    background-image: url("../static/images/home.904b74e7351a.jpg");
+    height: 100vh;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+.container-register {
+    background-color: rgba(211, 205, 247, 0.199);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 30%;
+    text-align: center;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.update-form {
+    display: flex;
+    flex-direction: column;   
+}
+
+
+
+/* Video section (unchanged) */
+.video-section {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+    justify-items: center;
+}
+
+.video-container {
+    box-sizing: border-box;
+    padding: 10px;
+}
+
+.video-container h2 {
+    text-align: center;
+}
+
+.description {
+    display: none;
+    text-align: center;
+}
+
+button {
+    display: block;
+    margin: 10px auto;
+}
+
+iframe {
+    width: 100%;
+    height: 315px;
+}
+
+/* Live class section */
+.content {
+    text-align: center;
+    max-width: 800px;
+    margin: auto;
+    padding: 20px;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.live-classes-list {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.live-class {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px;
+    background: #fafafa;
+    border: 1px solid #e0e0e0;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.live-class img {
+    max-width: 150px;
+    margin-right: 20px;
+}
+
+.live-class-content {
+    flex-grow: 1;
+}
+
+.live-class h2 {
+    font-size: 1.5em;
+    margin-bottom: 10px;
+}
+
+.live-class p {
+    margin-bottom: 10px;
+}
+
+.book-now {
+    background-color: #28a745;
+    color: #fff;
+    padding: 10px 15px;
+    text-decoration: none;
+    border-radius: 5px;
+}
+
+.book-now:hover {
+    background-color: #218838;
+}
+
+/*Comment section in home.html*/
+
+.liveclass-container {
+    margin-bottom: 2rem; 
+    text-align: center; 
+}
+
+.liveclass-title {
+    margin-bottom: 1rem;
+}
+
+
+.comment-form {
+    width: 45%;  
+}
+
+.comment-list {
+    
+    border-left: 1px solid #ccc; 
+    padding-left: 1rem; 
+}
+
+/*Liveclass in index.html*/
+
+.yoga-live-classes {
+    text-align: center;
+    background-color: #f4f4f4;
+}
+
+.yoga-live-classes h1 {
+    font-family: 'Amita', serif;
+    font-size: 3em;
+    color: rgb(31, 11, 46);
+    margin-bottom: 30px;
+}
+
+.live-classes-gallery {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.live-class-item {
+    flex: 1 1 calc(25% - 20px); /* Fyra kolumner med 20px gap */
+    box-sizing: border-box;
+    padding: 20px;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.live-class-item img {
+    max-width: 100%;
+    border-radius: 10px;
+    margin-bottom: 10px;
+}
+
+.live-class-item p {
+    font-family: 'Quicksand', sans-serif;
+    font-size: 1em;
+    color: rgb(31, 11, 46);
+}
+
+.container-footer {
+    background-image: url("../static/images/footer.cae81beeb2b1.jpg");
+    height: 300px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    }
+
+/* Media queries for responsiveness */
+
+@media (max-width: 768px) {
+    .live-class-item {
+        flex: 1 1 calc(50% - 20px);
+    }
+}
+
+@media (max-width: 480px) {
+    .live-class-item {
+        flex: 1 1 100%; 
+    }
+}
+
+@media (max-width: 768px) {
+    .video-section {
+        grid-template-columns: 1fr;
+    }
+    
+    .navbar-toggle {
+        display: block;
+    }
+    
+    .main-nav {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+        background-color: white;
+    }
+    
+    .main-nav li {
+        margin: 0;
+        text-align: center;
+        padding: 10px 0;
+    }
+    
+    .main-nav li:first-child {
+        margin-top: 10px;
+    }
+    
+    .main-nav li a {
+        width: 100%;
+        display: block;
+    }
+    
+    .main-nav.active {
+        display: flex;
+    }
+}
+
+@media (max-width: 600px) {
+    .container-register {
+        margin: 20px;
+        padding: 15px;
+    }
+}
