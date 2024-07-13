@@ -4,11 +4,12 @@ from django.contrib.auth import authenticate, login, logout
 from django.conf import settings
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.contrib.auth.decorators import login_required
-from .models import LiveClass, Booking, Comment
-from django.contrib import messages
-from .forms import UserRegisterForm, ProfileUpdateForm
 from django.core.mail import send_mail
 from django.core.mail import EmailMessage
+from django.contrib import messages
+from .models import LiveClass, Booking, Comment
+from .forms import UserRegisterForm, ProfileUpdateForm
+
 
 
 # homepage
