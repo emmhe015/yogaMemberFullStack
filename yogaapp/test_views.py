@@ -69,6 +69,7 @@ class LoginViewTest(TestCase):
         self.assertFalse(response.context['form'].is_valid())
         messages = list(get_messages(response.wsgi_request))
         self.assertTrue(any(message.message == 'Invalid username or password. Please try again.' for message in messages), "Error message not found in response context.")
+        self.assertContains(response, 'Invalid username or password. Please try again.')
 
     def test_login_view_post_valid_credentials(self):
         """
@@ -87,3 +88,4 @@ class LoginViewTest(TestCase):
         self.assertFalse(response.context['form'].is_valid())
         messages = list(get_messages(response.wsgi_request))
         self.assertTrue(any(message.message == 'Invalid username or password. Please try again.' for message in messages), "Error message not found in response context.")
+        self.assertContains(response, 'Invalid username or password. Please try again.')
