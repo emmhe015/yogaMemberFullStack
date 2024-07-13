@@ -119,7 +119,8 @@ The following table summarizes the results of automated tests for each view func
 Due to limited time I have decided to continue with my project and sumbit it anyway because it mainly works when deployed. If I had more time I would have tried more to fix the errors and warnings. 
 
 ### Lighthouse testing
-![Mockup](../yogaMemberFullStack/yogaapp/static/yogaapp/static/images/lighthousetesting.png)
+- Over 90 in score in all categories.
+![Lighthouse](../yogaMemberFullStack/yogaapp/static/yogaapp/static/images/lighthousetesting.png)
 
 ### Running Tests
 
