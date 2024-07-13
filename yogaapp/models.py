@@ -4,10 +4,17 @@ from cloudinary.models import CloudinaryField
 
 
 class Profile(models.Model):
-    user = models.OneToOneField(User, on_delete=models.CASCADE)
-    profile_picture = models.ImageField(upload_to='profile_pictures/', blank=True, null=True)
+     """
+    Represents a user profile, containing additional information such as profile picture.
+    
+    Attributes:
+        user (User): A one-to-one relationship with the built-in User model.
+        profile_picture (ImageField): An optional field for the profile picture of the user.
+    """
+     user = models.OneToOneField(User, on_delete=models.CASCADE)
+     profile_picture = models.ImageField(upload_to='profile_pictures/', blank=True, null=True)
 
-    def __str__(self):
+     def __str__(self):
         return self.user.username
 
 
