@@ -14,6 +14,17 @@ from .forms import UserRegisterForm, ProfileUpdateForm
 
 # homepage
 def home(request):
+    """
+    Render the homepage.
+
+    This view does not interact with any models or forms.
+
+    Args:
+        request (HttpRequest): The request object.
+
+    Returns:
+        HttpResponse: The rendered homepage.
+    """
     
     return render(request, 'index.html')
 
