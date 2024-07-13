@@ -66,11 +66,11 @@ class ProfileUpdateForm(forms.ModelForm):
 
     class Meta:
         model = User
-        fields = ['first_name', 'last_name', 'email', 'password']
+        fields = ['first_name', 'last_name', 'email', 'password', 'password_confirmation']
     
     def clean_email(self):
         email = self.cleaned_data.get('email')
-        if User.objects.filter(email=email).exists():
+        if User.objects.filter(email=email).exists() and email != self.instance.email:
             raise ValidationError("Email is already in use.")
         return email
 
@@ -83,19 +83,13 @@ class ProfileUpdateForm(forms.ModelForm):
             self.add_error('password_confirmation', "Passwords do not match.")
         
         if password:
-            validate_password(password)
-
-        first_name = cleaned_data.get("first_name")
-        last_name = cleaned_data.get("last_name")
-
-        if not first_name:
-            self.add_error('first_name', "First name is required.")
-        if not last_name:
-            self.add_error('last_name', "Last name is required.")
+            try:
+                validate_password(password, self.instance)
+            except ValidationError as e:
+                self.add_error('password', e)
         
         return cleaned_data
-
-
+        
     def save(self, commit=True):
         user = super().save(commit=False)
         password = self.cleaned_data.get('password')

@@ -147,7 +147,6 @@ def update_profile(request):
 
     return render(request, 'update_profile.html', {'form': form})
 
-
 # booking
 def booking_view(request, class_id):
     """
@@ -256,3 +255,4 @@ def logout_view(request):
     """
     logout(request)
     return redirect('logout.html')
+
