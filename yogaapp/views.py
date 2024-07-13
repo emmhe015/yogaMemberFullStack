@@ -88,6 +88,18 @@ def login_view(request):
 
 # registration
 def register_view(request):
+    """
+    Handle user registration.
+
+    Forms:
+        - UserRegisterForm: Used for registering new users.
+
+    Args:
+        request (HttpRequest): The request object.
+
+    Returns:
+        HttpResponse: The rendered registration page.
+    """
     if request.method == 'POST':
         user_form = UserRegisterForm(request.POST)
         if user_form.is_valid():
