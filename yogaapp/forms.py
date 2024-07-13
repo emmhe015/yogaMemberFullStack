@@ -34,6 +34,27 @@ class UserRegisterForm(UserCreationForm):
         fields = ['username', 'first_name', 'last_name', 'email', 'password1', 'password2']
 
 class ProfileUpdateForm(forms.ModelForm):
+    """
+    Form for updating user profile information.
+
+    This form allows users to update their first name, last name, email,
+    and password. Password fields are optional and include validation.
+
+    Fields:
+        - first_name: The user's first name.
+        - last_name: The user's last name.
+        - email: The user's email address.
+        - password: The user's new password (optional).
+        - password_confirmation: Confirmation of the new password (optional).
+
+    Meta:
+        model: The User model from django.contrib.auth.models.
+        fields: The fields to include in the form.
+
+    Methods:
+        clean_email: Validates the email to ensure it is not already in use.
+        clean: Validates that the passwords match and validates the password strength.
+    """
     password = forms.CharField(widget=forms.PasswordInput(), required=False)
     password_confirmation = forms.CharField(widget=forms.PasswordInput(), required=False)
 
