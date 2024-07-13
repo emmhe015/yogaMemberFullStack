@@ -83,7 +83,7 @@ def login_view(request):
     else:
         form = AuthenticationForm()
     
-    return render(request, 'login.html', {'form': form})
+    return render(request, '/login.html', {'form': form})
 
 # registration
 def register_view(request):
