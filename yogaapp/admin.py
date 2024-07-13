@@ -34,6 +34,18 @@ class LiveClassAdmin(admin.ModelAdmin):
 
 @admin.register(Booking)
 class BookingAdmin(admin.ModelAdmin):
+    """
+    Admin interface options for Booking model.
+
+    List Display:
+        - user: The user who made the booking.
+        - get_live_class: The title of the live class.
+        - get_booking_date: The date and time when the booking was made.
+
+    Methods:
+        - get_live_class: Returns the title of the live class associated with the booking.
+        - get_booking_date: Returns the date and time when the booking was made.
+    """
     list_display = ('user', 'get_live_class', 'get_booking_date')
 
     def get_live_class(self, obj):
