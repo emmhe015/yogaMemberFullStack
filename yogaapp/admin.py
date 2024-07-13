@@ -16,6 +16,19 @@ class ProfileAdmin(admin.ModelAdmin):
     
 @admin.register(LiveClass)
 class LiveClassAdmin(admin.ModelAdmin):
+    """
+    Admin interface options for LiveClass model.
+
+    List Display:
+        - title: The title of the live class.
+        - date: The date of the live class.
+        - time: The time of the live class.
+        - description: The description of the live class.
+
+    Search Fields:
+        - title: The title of the live class.
+        - description: The description of the live class.
+    """
     list_display = ('title', 'date', 'time', 'description')
     search_fields = ('title', 'description')
 
