@@ -191,6 +191,20 @@ def cancel_booking(request, class_id):
 # comments
 @login_required
 def add_comment(request, class_id):
+    """
+    Handle adding a comment to a live class for logged-in users.
+
+    Models:
+        - LiveClass: Retrieves the live class to comment on.
+        - Comment: Creates a comment for the live class.
+
+    Args:
+        request (HttpRequest): The request object.
+        class_id (int): The ID of the live class to comment on.
+
+    Returns:
+        HttpResponseRedirect: Redirect to the logged-in homepage.
+    """
     live_class = get_object_or_404(LiveClass, id=class_id)
     if request.method == 'POST':
         text = request.POST.get('text')
