@@ -58,4 +58,13 @@ class BookingAdmin(admin.ModelAdmin):
 
 @admin.register(Comment)
 class CommentAdmin(admin.ModelAdmin):
+    """
+    Admin interface options for Comment model.
+
+    List Display:
+        - user: The user who posted the comment.
+        - live_class: The live class associated with the comment.
+        - text: The content of the comment.
+        - created_at: The date and time when the comment was created.
+    """
     list_display = ('user', 'live_class', 'text', 'created_at')
