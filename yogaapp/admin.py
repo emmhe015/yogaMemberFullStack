@@ -5,6 +5,13 @@ from .models import Profile, Booking, Comment, LiveClass
 
 @admin.register(Profile)
 class ProfileAdmin(admin.ModelAdmin):
+    """
+    Admin interface options for Profile model.
+
+    List Display:
+        - user: The user associated with the profile.
+        - profile_picture: The profile picture of the user.
+    """
     list_display = ('user', 'profile_picture')
     
 @admin.register(LiveClass)
