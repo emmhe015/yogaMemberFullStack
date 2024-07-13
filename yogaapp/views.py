@@ -167,6 +167,19 @@ def booking_view(request, class_id):
 
 @login_required
 def cancel_booking(request, class_id):
+    """
+    Handle cancellation of a booking for a live class.
+
+    Models:
+        - Booking: Retrieves and deletes the user's booking.
+
+    Args:
+        request (HttpRequest): The request object.
+        class_id (int): The ID of the live class to cancel booking for.
+
+    Returns:
+        HttpResponseRedirect: Redirect to the logged-in homepage.
+    """
     try:
         booking = Booking.objects.get(user=request.user, live_class_id=class_id)
         booking.delete()
