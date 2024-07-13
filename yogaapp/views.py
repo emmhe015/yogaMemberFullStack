@@ -113,6 +113,18 @@ def register_view(request):
 # update profile
 @login_required
 def update_profile(request):
+    """
+    Handle profile update for logged-in users.
+
+    Forms:
+        - ProfileUpdateForm: Used for updating user profiles.
+
+    Args:
+        request (HttpRequest): The request object.
+
+    Returns:
+        HttpResponse: The rendered profile update page.
+    """
     if request.method == 'POST':
         form = ProfileUpdateForm(request.POST, instance=request.user)
         if form.is_valid():
