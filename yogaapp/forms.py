@@ -7,6 +7,24 @@ from .models import LiveClass, Profile
 
 
 class UserRegisterForm(UserCreationForm):
+    """
+    Form for registering a new user with additional required fields.
+
+    This form extends the built-in UserCreationForm to include additional
+    fields for email, first name, and last name.
+
+    Fields:
+        - username: The user's username.
+        - first_name: The user's first name (required).
+        - last_name: The user's last name (required).
+        - email: The user's email address (required).
+        - password1: The user's password.
+        - password2: Password confirmation.
+
+    Meta:
+        model: The User model from django.contrib.auth.models.
+        fields: The fields to include in the form.
+    """
     email = forms.EmailField(required=True)
     first_name = forms.CharField(max_length=30, required=True)
     last_name = forms.CharField(max_length=30, required=True)
