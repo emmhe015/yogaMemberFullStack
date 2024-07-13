@@ -1,114 +1,187 @@
-![CI logo](https://codeinstitute.s3.amazonaws.com/fullstack/ci_logo_small.png)
+# Yoga Studio Web App
 
-Welcome Emma Henriksson,
+# Table of Contents
 
-This is the Code Institute student template for Gitpod. We have preinstalled all of the tools you need to get started. It's perfectly ok to use this template as the basis for your project submissions.
+- [Yoga Studio Web App](#yoga-studio-web-app)
+  - [Introduction](#introduction)
+  - [Views](#views)
+    - [Home Page](#home-page)
+    - [Home Page for Logged-in Users](#home-page-for-logged-in-users)
+    - [Login](#login)
+    - [Registration](#registration)
+    - [Update Profile](#update-profile)
+    - [Booking View](#booking-view)
+    - [Cancel Booking](#cancel-booking)
+    - [Add Comment](#add-comment)
+    - [Delete Comment](#delete-comment)
+    - [Logout](#logout)
+  - [Testing](#testing)
+    - [Automated Tests](#automated-tests)
+    - [Running Tests](#running-tests)
+  - [Design and User Stories](#design-and-user-stories)
+    - [Design](#design)
+      - [Technical Architecture](#technical-architecture)
+      - [User Interface (UI/UX)](#user-interface-uiux)
+    - [User Stories](#user-stories)
+      - [Visitor](#visitor)
+      - [Logged-in User](#logged-in-user)
+    - [Implemented Features](#implemented-features)
+  - [Deployment](#deployment)
+    - [GitHub and Heroku Deployment](#github-and-heroku-deployment)
+  - [Credits](#credits)
 
-You can safely delete this README.md file or change it for your own project. Please do read it at least once, though! It contains some important information about Gitpod and the extensions we use. Some of this information has been updated since the video content was created. The last update to this file was: **May 28, 2024**
 
-## Gitpod Reminders
 
-To run a frontend (HTML, CSS, Javascript only) application in Gitpod, in the terminal, type:
+## Introduction
+This Django web application provides functionalities for user authentication, profile management, class booking, and commenting on yoga liveclasses.
 
-`python3 -m http.server`
+![Mockup](../yogaMemberFullStack/yogaapp/static/yogaapp/static/images/mockup.jpg)
 
-A blue button should appear to click: _Make Public_,
+## Views
 
-Another blue button should appear to click: _Open Browser_.
+### Home Page
+**URL:** `/`
 
-To run a backend Python file, type `python3 app.py` if your Python file is named `app.py`, of course.
+**Description:** Renders the homepage of the Yoga Studio.
 
-A blue button should appear to click: _Make Public_,
+### Home Page for Logged-in Users
+**URL:** `/home/`
 
-Another blue button should appear to click: _Open Browser_.
+**Description:** Renders the homepage for logged-in users, displaying all available live classes and the user's booked classes.
 
-By Default, Gitpod gives you superuser security privileges. Therefore, you do not need to use the `sudo` (superuser do) command in the bash terminal in any of the lessons.
+### Login
+**URL:** `/login/`
 
-To log into the Heroku toolbelt CLI:
+**Description:** Handles user authentication. Uses Django's built-in `AuthenticationForm` for logging in users.
 
-1. Log in to your Heroku account and go to *Account Settings* in the menu under your avatar.
-2. Scroll down to the *API Key* and click *Reveal*
-3. Copy the key
-4. In Gitpod, from the terminal, run `heroku_config`
-5. Paste in your API key when asked
+### Registration
+**URL:** `/register/`
 
-You can now use the `heroku` CLI program - try running `heroku apps` to confirm it works. This API key is unique and private to you, so do not share it. If you accidentally make it public, you can create a new one with _Regenerate API Key_.
+**Description:** Handles user registration. Uses a custom `UserRegisterForm` for registering new users.
 
-------
+### Update Profile
+**URL:** `/update-profile/`
 
-## Release History
+**Description:** Handles profile updates for logged-in users. Uses a `ProfileUpdateForm` for updating user profiles, including password updates.
 
-We continually tweak and adjust this template to help give you the best experience. Here is the version history:
+### Booking View
+**URL:** `/booking/<class_id>/`
 
-**May 28 2024:** Fix Mongo and Links installs
+**Description:** Handles booking of a live class for logged-in users. Creates a booking if the user has not already booked the class.
 
-**April 26 2024:** Update node version to 16
+### Cancel Booking
+**URL:** `/cancel-booking/<class_id>/`
 
-**September 20 2023:** Update Python version to 3.9.17.
+**Description:** Handles cancellation of a booking for a live class. Deletes the booking if it exists for the logged-in user.
 
-**September 1 2021:** Remove `PGHOSTADDR` environment variable.
+### Add Comment
+**URL:** `/add-comment/<class_id>/`
 
-**July 19 2021:** Remove `font_fix` script now that the terminal font issue is fixed.
+**Description:** Handles adding a comment to a live class for logged-in users. Creates a comment associated with the specified live class.
 
-**July 2 2021:** Remove extensions that are not available in Open VSX.
+### Delete Comment
+**URL:** `/delete-comment/<comment_id>/`
 
-**June 30 2021:** Combined the P4 and P5 templates into one file, added the uptime script. See the FAQ at the end of this file.
+**Description:** Handles deletion of a comment for logged-in users. Deletes the comment if the user is the owner of the comment.
 
-**June 10 2021:** Added: `font_fix` script and alias to fix the Terminal font issue
+### Logout
+**URL:** `/logout/`
 
-**May 10 2021:** Added `heroku_config` script to allow Heroku API key to be stored as an environment variable.
+**Description:** Handles user logout. Logs out the current user session.
 
-**April 7 2021:** Upgraded the template for VS Code instead of Theia.
+## Testing
 
-**October 21 2020:** Versions of the HTMLHint, Prettier, Bootstrap4 CDN and Auto Close extensions updated. The Python extension needs to stay the same version for now.
+### Automated Tests
 
-**October 08 2020:** Additional large Gitpod files (`core.mongo*` and `core.python*`) are now hidden in the Explorer, and have been added to the `.gitignore` by default.
+The following table summarizes the results of automated tests for each view function:
 
-**September 22 2020:** Gitpod occasionally creates large `core.Microsoft` files. These are now hidden in the Explorer. A `.gitignore` file has been created to make sure these files will not be committed, along with other common files.
+| View Function            | Test Description                                | Test Result |
+|--------------------------|-------------------------------------------------|-------------|
+| `home`                   | Renders homepage correctly.                     | Passed      |
+| `home_logged_in`         | Renders logged-in homepage correctly.           | Passed      |
+| `login_view`             | Logs in user with valid credentials.            | Passed      |
+|                          | Shows error with invalid credentials.           | Fail      |
+| `register_view`          | Registers user with valid data.                 | Passed      |
+|                          | Shows errors with invalid data.                 | Passed      |
+| `update_profile`         | Updates user profile correctly.                 | Passed      |
+|                          | Shows errors with invalid data.                 | Fail      |
+| `booking_view`           | Books a class for logged-in user.               | Passed      |
+| `cancel_booking`         | Cancels a booked class for logged-in user.      | Passed      |
+| `add_comment`            | Adds a comment to a live class.                 | Passed      |
+| `delete_comment`         | Deletes user's own comment.                    | Passed      |
+| `logout_view`            | Logs out the user successfully.                 | Passed      |
 
-**April 16 2020:** The template now automatically installs MySQL instead of relying on the Gitpod MySQL image. The message about a Python linter not being installed has been dealt with, and the set-up files are now hidden in the Gitpod file explorer.
+### Fail Explanations
+- Frequently tried to fix the error with error message showing in login and update, but with no luck. 
 
-**April 13 2020:** Added the _Prettier_ code beautifier extension instead of the code formatter built-in to Gitpod.
+### HTML, CSS Testing
+- Shows error and warnings:
+Due to limited time I have decided to continue with my project and sumbit it anyway because it mainly works when deployed. If I had more time I would have tried more to fix the errors and warnings. 
 
-**February 2020:** The initialisation files now _do not_ auto-delete. They will remain in your project. You can safely ignore them. They just make sure that your workspace is configured correctly each time you open it. It will also prevent the Gitpod configuration popup from appearing.
+### Lighthouse testing
+![Mockup](../yogaMemberFullStack/yogaapp/static/yogaapp/static/images/lighthousetesting.png)
 
-**December 2019:** Added Eventyret's Bootstrap 4 extension. Type `!bscdn` in a HTML file to add the Bootstrap boilerplate. Check out the <a href="https://github.com/Eventyret/vscode-bcdn" target="_blank">README.md file at the official repo</a> for more options.
+### Running Tests
 
-------
+To run these tests locally:
 
-## FAQ about the uptime script
+1. Ensure all dependencies are installed using `pip install -r requirements.txt`.
+2. Run the tests using Django's test runner:
 
-**Why have you added this script?**
+# Design and User Stories
 
-It will help us to calculate how many running workspaces there are at any one time, which greatly helps us with cost and capacity planning. It will help us decide on the future direction of our cloud-based IDE strategy.
+## Design
 
-**How will this affect me?**
+### Technical Architecture
 
-For everyday usage of Gitpod, it doesn’t have any effect at all. The script only captures the following data:
+The application is built using Django, following a typical MVC (Model-View-Controller) architecture, where:
 
-- An ID that is randomly generated each time the workspace is started.
-- The current date and time
-- The workspace status of “started” or “running”, which is sent every 5 minutes.
+- **Models**: Define data models such as `User`, `LiveClass`, `Booking`, and `Comment`.
+- **Views**: Handle the logic to process user requests and render data.
+- **Templates**: Utilize Django's template system to create HTML interfaces.
 
-It is not possible for us or anyone else to trace the random ID back to an individual, and no personal data is being captured. It will not slow down the workspace or affect your work.
+### User Interface (UI/UX)
 
-**So….?**
+The interface is designed to be simple and intuitive for users:
 
-We want to tell you this so that we are being completely transparent about the data we collect and what we do with it.
+- **Homepage**: Provides an overview of available classes and the user's booked classes.
+- **Login and Registration**: Uses Django's authentication system for user login and registration forms.
+- **Profile Management**: Allows users to update their profiles and change passwords.
+- **Class Booking**: Enables users to book live classes.
+- **Comments**: Enables users to add and delete comments on live classes.
 
-**Can I opt out?**
+## User Stories
 
-Yes, you can. Since no personally identifiable information is being captured, we'd appreciate it if you let the script run; however if you are unhappy with the idea, simply run the following commands from the terminal window after creating the workspace, and this will remove the uptime script:
+### Visitor
 
-```
-pkill uptime.sh
-rm .vscode/uptime.sh
-```
+1. **As a visitor, I want to see a list of available classes and their details.**
+2. **As a visitor, I want to register as a user to book classes and add comments.**
 
-**Anything more?**
+### Logged-in User
 
-Yes! We'd strongly encourage you to look at the source code of the `uptime.sh` file so that you know what it's doing. As future software developers, it will be great practice to see how these shell scripts work.
+1. **As a logged-in user, I want to log into my profile to manage my bookings.**
+2. **As a logged-in user, I want to update my profile information and change my password.**
+3. **As a logged-in user, I want to book live classes and see a list of my bookings.**
+4. **As a logged-in user, I want to add comments on live classes and delete my own comments.**
 
----
+## Implemented Features
 
-Happy coding!
+The application implements the following features to fulfill the user stories:
+
+- **User Authentication and Authorization** using Django's built-in `User` model.
+- **Profile Management** with the ability to update user information including password.
+- **Class Booking** with management of booking statuses and display of booked classes.
+- **Comments** functionality allowing users to add and delete comments on live classes.
+
+## Deployment
+The site was deployed to GitHub Pages. The steps to deploy are as follows:
+1. In the GitHub repository, navigate to the **Settings** tab.
+2. From the source section drop-down menu, select the **Master Branch**.
+3. Once the master branch has been selected, the page will automatically refresh with a detailed ribbon display to indicate the successful deployment.
+
+
+### Credits
+ - Fonts are from https://www.googlefont.com
+ - favicon are from https://www.flaticon.com
+ - Images are from https://www.canva.com
+ - Social media icons in footer are from https://www.flaticon.com
