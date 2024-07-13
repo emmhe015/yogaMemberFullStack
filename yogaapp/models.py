@@ -19,6 +19,16 @@ class Profile(models.Model):
 
 
 class LiveClass(models.Model):
+    """
+    Represents a live class that users can book.
+    
+    Attributes:
+        title (str): The title of the live class.
+        date (date): The date when the live class will occur.
+        time (time): The time when the live class will occur.
+        description (str): A detailed description of the live class.
+        featured_image (CloudinaryField): An optional field for the image representing the live class.
+    """
     title = models.CharField(max_length=100)
     date = models.DateField()
     time = models.TimeField()
