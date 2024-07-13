@@ -55,6 +55,15 @@ class Booking(models.Model):
         return f'{self.user.username} - {self.live_class.title}'
 
 class Comment(models.Model):
+    """
+    Represents a comment made by a user on a live class.
+    
+    Attributes:
+        user (User): A foreign key to the user who made the comment.
+        live_class (LiveClass): A foreign key to the live class that the comment is about.
+        text (str): The content of the comment.
+        created_at (datetime): The date and time when the comment was created.
+    """
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     live_class = models.ForeignKey(LiveClass, on_delete=models.CASCADE, related_name='comments')
     text = models.TextField()
