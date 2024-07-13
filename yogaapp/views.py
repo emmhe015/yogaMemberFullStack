@@ -57,6 +57,18 @@ def home_logged_in(request):
 
 # login
 def login_view(request):
+    """
+    Handle user login.
+
+    Forms:
+        - AuthenticationForm: Used for authenticating users.
+
+    Args:
+        request (HttpRequest): The request object.
+
+    Returns:
+        HttpResponse: The rendered login page.
+    """
     if request.method == 'POST':
         form = AuthenticationForm(request, data=request.POST)
         if form.is_valid():
