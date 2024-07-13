@@ -6,6 +6,7 @@ from django.contrib.auth.forms import AuthenticationForm
 from django.contrib import messages
 from django.contrib.messages import get_messages
 from yogaapp.models import LiveClass, Booking
+from .forms import ProfileUpdateForm
 
 class HomeViewTest(TestCase):
     def test_home_view(self):
@@ -103,3 +104,59 @@ class RegisterViewTest(TestCase):
         self.assertTrue(any("username: This field is required." in message.message for message in messages))
         self.assertTrue(any("first_name: This field is required." in message.message for message in messages))
         self.assertTrue(any("last_name: This field is required." in message.message for message in messages))
+
+class UpdateProfileViewTest(TestCase):
+
+    def setUp(self):
+        self.client = Client()
+        self.user = User.objects.create_user(username='testuser', password='testpassword123', email='testuser@example.com')
+        self.client.login(username='testuser', password='testpassword123')
+        self.update_profile_url = reverse('update_profile')
+
+    def test_update_profile_view_get(self):
+        response = self.client.get(self.update_profile_url)
+        self.assertEqual(response.status_code, 200)
+        self.assertTemplateUsed(response, 'update_profile.html')
+
+    def test_update_profile_view_post_valid(self):
+        response = self.client.post(self.update_profile_url, {
+            'first_name': 'NewFirstName',
+            'last_name': 'NewLastName',
+            'email': 'newemail@example.com',
+            'password': '',
+            'password_confirmation': ''
+        })
+        self.user.refresh_from_db()
+        self.assertEqual(response.status_code, 302)
+        self.assertRedirects(response, reverse('profile'))
+        self.assertEqual(self.user.first_name, 'NewFirstName')
+        self.assertEqual(self.user.last_name, 'NewLastName')
+        self.assertEqual(self.user.email, 'newemail@example.com')
+        messages = list(get_messages(response.wsgi_request))
+        self.assertTrue(any("Your profile was successfully updated!" in message.message for message in messages))
+
+    def test_update_profile_view_post_password_update(self):
+        response = self.client.post(self.update_profile_url, {
+            'first_name': 'TestFirstName',
+            'last_name': 'TestLastName',
+            'email': 'testuser@example.com',
+            'password': 'newpassword123',
+            'password_confirmation': 'newpassword123'
+        })
+        self.user.refresh_from_db()
+        self.assertEqual(response.status_code, 302)
+        self.assertRedirects(response, reverse('profile'))
+        self.assertTrue(self.user.check_password('newpassword123'))
+
+    def test_update_profile_view_post_invalid(self):
+        response = self.client.post(self.update_profile_url, {
+            'first_name': '',
+            'last_name': 'NewLastName',
+            'email': 'newemail@example.com',
+            'password': '',
+            'password_confirmation': ''
+        })
+        self.assertEqual(response.status_code, 200)
+        self.assertTemplateUsed(response, 'update_profile.html')
+        messages = list(get_messages(response.wsgi_request))
+        self.assertTrue(any("first_name: This field is required." in message.message for message in messages))
