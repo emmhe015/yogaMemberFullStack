@@ -105,10 +105,15 @@ def register_view(request):
             user = user_form.save()
             login(request, user, backend='django.contrib.auth.backends.ModelBackend')
             return redirect('home_logged_in')
+        else:
+            for field, errors in user_form.errors.items():
+                for error in errors:
+                    messages.error(request, f"{field}: {error}")
     else:
         user_form = UserRegisterForm()
+    
     return render(request, 'register.html', {'user_form': user_form})
-
+    
 # update profile
 @login_required
 def update_profile(request):
