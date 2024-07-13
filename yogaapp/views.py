@@ -75,15 +75,15 @@ def login_view(request):
             user = authenticate(username=username, password=password)
             if user is not None:
                 login(request, user)
-                return redirect('home.html')
+                return redirect('home_logged_in')
             else:
                 messages.error(request, 'Invalid username or password. Please try again.')
         else:
             messages.error(request, 'Invalid username or password. Please try again.')
     else:
         form = AuthenticationForm()
+    return redirect(reverse('registration/login.html', {'form': form}))
     
-    return render(request, '/login.html', {'form': form})
 
 # registration
 def register_view(request):

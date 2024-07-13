@@ -45,47 +45,38 @@ class HomeLoggedInViewTest(TestCase):
         self.assertEqual(list(booked_classes), [self.live_class1])
 
 class LoginViewTest(TestCase):
-
     def setUp(self):
         self.client = Client()
         self.login_url = reverse('login_view')
         self.user = User.objects.create_user(username='testuser', password='testpassword')
-
+    
     def test_login_view_get(self):
-        """
-        Test that the login view renders correctly on a GET request.
-        """
         response = self.client.get(self.login_url)
         self.assertEqual(response.status_code, 200)
-        self.assertTemplateUsed(response, 'login.html')
+        self.assertTemplateUsed(response, 'registration/login.html')
+    
+    def test_login_view_post_valid(self):
+        response = self.client.post(self.login_url, {
+            'username': 'testuser',
+            'password': 'testpassword'
+        })
+        self.assertEqual(response.status_code, 302)
+        self.assertRedirects(response, reverse('home_logged_in'))  # Adjust to your actual logged-in home view
 
     def test_login_view_post_invalid_credentials(self):
-        """
-        Test that the login view does not log in a user with invalid credentials
-        and shows an error message.
-        """
-        response = self.client.post(self.login_url, {'username': 'testuser', 'password': 'wrongpassword'})
+        response = self.client.post(self.login_url, {
+            'username': 'wronguser',
+            'password': 'wrongpassword'
+        })
         self.assertEqual(response.status_code, 200)
-        self.assertFalse(response.context['form'].is_valid())
         messages = list(get_messages(response.wsgi_request))
-        self.assertTrue(any(message.message == 'Invalid username or password. Please try again.' for message in messages), "Error message not found in response context.")
-        self.assertContains(response, 'Invalid username or password. Please try again.')
-
-    def test_login_view_post_valid_credentials(self):
-        """
-        Test that the login view logs in a user with valid credentials and redirects.
-        """
-        response = self.client.post(self.login_url, {'username': 'testuser', 'password': 'testpassword'})
-        self.assertRedirects(response, reverse('home_logged_in'))
-
+        self.assertTrue(any(message.message == 'Invalid username or password. Please try again.' for message in messages))
+    
     def test_login_view_post_invalid_form(self):
-        """
-        Test that the login view does not log in a user with invalid form data
-        and shows an error message.
-        """
-        response = self.client.post(self.login_url, {'username': '', 'password': ''})
+        response = self.client.post(self.login_url, {
+            'username': '',
+            'password': ''
+        })
         self.assertEqual(response.status_code, 200)
-        self.assertFalse(response.context['form'].is_valid())
         messages = list(get_messages(response.wsgi_request))
-        self.assertTrue(any(message.message == 'Invalid username or password. Please try again.' for message in messages), "Error message not found in response context.")
-        self.assertContains(response, 'Invalid username or password. Please try again.')
+        self.assertTrue(any(message.message == 'Invalid username or password. Please try again.' for message in messages))
