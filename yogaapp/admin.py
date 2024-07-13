@@ -1,6 +1,6 @@
 from django.contrib import admin
-from .models import Profile, Booking, Comment, LiveClass
 from django_summernote.admin import SummernoteModelAdmin
+from .models import Profile, Booking, Comment, LiveClass
 
 
 @admin.register(Profile)
