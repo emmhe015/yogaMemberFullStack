@@ -217,6 +217,19 @@ def add_comment(request, class_id):
 
 @login_required
 def delete_comment(request, comment_id):
+    """
+    Handle deletion of a comment for logged-in users.
+
+    Models:
+        - Comment: Retrieves and deletes the user's comment.
+
+    Args:
+        request (HttpRequest): The request object.
+        comment_id (int): The ID of the comment to delete.
+
+    Returns:
+        HttpResponseRedirect: Redirect to the logged-in homepage.
+    """
     comment = get_object_or_404(Comment, id=comment_id)
     if comment.user == request.user:
         comment.delete()
