@@ -144,6 +144,20 @@ def update_profile(request):
 
 # booking
 def booking_view(request, class_id):
+    """
+    Handle booking of a live class for logged-in users.
+
+    Models:
+        - LiveClass: Retrieves the live class to be booked.
+        - Booking: Creates a booking for the user.
+
+    Args:
+        request (HttpRequest): The request object.
+        class_id (int): The ID of the live class to book.
+
+    Returns:
+        HttpResponse: The rendered booking success or already booked page.
+    """
     live_class = get_object_or_404(LiveClass, id=class_id)
     booking, created = Booking.objects.get_or_create(user=request.user, live_class=live_class)
     if created:
