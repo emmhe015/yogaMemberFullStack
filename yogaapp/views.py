@@ -113,7 +113,7 @@ def register_view(request):
         user_form = UserRegisterForm()
     
     return render(request, 'register.html', {'user_form': user_form})
-    
+
 # update profile
 @login_required
 def update_profile(request):
@@ -139,7 +139,9 @@ def update_profile(request):
             messages.success(request, 'Your profile was successfully updated!')
             return redirect('profile')
         else:
-            messages.error(request, 'Please correct the error below.')
+            for field, errors in user_form.errors.items():
+                for error in errors:
+                    messages.error(request, f"{field}: {error}")
     else:
         form = ProfileUpdateForm(instance=request.user)
 
