@@ -111,9 +111,7 @@ TEMPLATES = [
     },
 ]
 
-LOGIN_REDIRECT_URL = "start" 
-LOGIN_URL = 'login'
-
+login_url = 'login'
 
 WSGI_APPLICATION = 'yogastudio.wsgi.application'
 
