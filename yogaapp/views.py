@@ -137,9 +137,9 @@ def update_profile(request):
                 user.set_password(form.cleaned_data['password'])
             user.save()
             messages.success(request, 'Your profile was successfully updated!')
-            return redirect('profile')
+            return redirect('update_profile')
         else:
-            for field, errors in user_form.errors.items():
+            for field, errors in form.errors.items():
                 for error in errors:
                     messages.error(request, f"{field}: {error}")
     else:
