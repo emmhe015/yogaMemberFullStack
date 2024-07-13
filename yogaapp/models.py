@@ -39,6 +39,14 @@ class LiveClass(models.Model):
         return self.title
 
 class Booking(models.Model):
+    """
+    Represents a booking of a user for a specific live class.
+    
+    Attributes:
+        user (User): A foreign key to the user who made the booking.
+        live_class (LiveClass): A foreign key to the live class that is booked.
+        booked_at (datetime): The date and time when the booking was made.
+    """
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     live_class = models.ForeignKey(LiveClass, on_delete=models.CASCADE, default=1)
     booked_at = models.DateTimeField(auto_now_add=True)
