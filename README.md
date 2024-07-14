@@ -102,7 +102,7 @@ The following table summarizes the results of automated tests for each view func
 | `login_view`             | Logs in user with valid credentials.            | Passed      |
 |                          | Shows error with invalid credentials.           | Fail      |
 | `register_view`          | Registers user with valid data.                 | Passed      |
-|                          | Shows errors with invalid data.                 | Passed      |
+|                          | Shows errors with invalid data.                 | Fail      |
 | `update_profile`         | Updates user profile correctly.                 | Passed      |
 |                          | Shows errors with invalid data.                 | Fail      |
 | `booking_view`           | Books a class for logged-in user.               | Passed      |
@@ -112,7 +112,7 @@ The following table summarizes the results of automated tests for each view func
 | `logout_view`            | Logs out the user successfully.                 | Passed      |
 
 ### Fail Explanations
-- Frequently tried to fix the error with error message showing in login and update, but with no luck. 
+- Frequently tried to fix the error with error message showing in login, register and update, but with no luck. I honestly gave up after a few hours googling my way onward. 
 
 ### HTML, CSS Testing
 - Shows error and warnings:
